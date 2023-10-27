@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
+
+os:
+  editPreset: "nvim"
+gui:
+  nerdFontsVersion: "3"
+  showFileTree: false
+  theme:
+    selectedLineBgColor:
+      - "#1e4273"
+
