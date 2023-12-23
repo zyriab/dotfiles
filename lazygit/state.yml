@@ -1,6 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/zyr/dotfiles
+- /Users/zyr/Developer/dotfiles
+- /Users/zyr/Developer/portfolio
+- /Users/zyr/Developer/cweri
+- /Users/zyr/scripts
 startuppopupversion: 5
 customcommandshistory:
 - q
