@@ -4,10 +4,11 @@ local notify = require("notify")
 vim.notify = notify
 
 vim.keymap.set("n", "<leader><leader>", function()
-    notify.dismiss()
+    notify.dismiss({ silent = true, pending = true })
+    vim.cmd("noh")
 end)
 
--- TODO: implement full on notify useage
+-- TODO: implement full on notify usage
 -- See: https://github.com/rcarriga/nvim-notify/wiki/Usage-Recipes#progress-updates
 
 notify.setup({

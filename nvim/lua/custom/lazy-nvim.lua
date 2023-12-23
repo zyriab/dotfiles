@@ -60,9 +60,9 @@ local plugins = {
         },
         config = true,
     },
-    {
-        "github/copilot.vim"
-    },
+    -- {
+    --     "github/copilot.vim"
+    -- },
     {
         "codota/tabnine-nvim",
         build = "./dl_binaries.sh"
