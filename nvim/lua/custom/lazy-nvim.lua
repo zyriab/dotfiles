@@ -18,7 +18,7 @@ local plugins = {
     "folke/neodev.nvim",
     {
         "ZyriabDsgn/npm-dap.nvim",
-        dir = "/mnt/DATA/dev/plugins/npm-dap.nvim"
+        -- dir = "/mnt/DATA/dev/plugins/npm-dap.nvim"
     },
     -- UI
     {
@@ -63,10 +63,10 @@ local plugins = {
     {
         "github/copilot.vim"
     },
-    -- {
-    --     "codota/tabnine-nvim",
-    --     build = "./dl_binaries.sh"
-    -- },
+    {
+        "codota/tabnine-nvim",
+        build = "./dl_binaries.sh"
+    },
     {
         "mhartington/formatter.nvim"
     },
@@ -188,6 +188,9 @@ local plugins = {
             { "hrsh7th/cmp-nvim-lsp" }, -- Required
             { "L3MON4D3/LuaSnip" },     -- Required
         }
+    },
+    {
+        "zyriabdsgn/vim-dbml"
     },
     -- TREESITTER
     -- TODO: move config to its dedicated file in nvim/after/treesitter.lua
