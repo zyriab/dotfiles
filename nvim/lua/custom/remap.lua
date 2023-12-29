@@ -6,9 +6,10 @@ vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>ft", vim.cmd.Ex)
 
 -- Saves
-vim.keymap.set("n", "<C-s>", function() vim.cmd("w") end)
-vim.keymap.set("v", "<C-s>", function() vim.cmd("w") end)
-vim.keymap.set("i", "<C-s>", function() vim.cmd("w") end)
+-- FIXME: conflicts with harpoon
+-- vim.keymap.set("n", "<C-s>", function() vim.cmd("w") end)
+-- vim.keymap.set("v", "<C-s>", function() vim.cmd("w") end)
+-- vim.keymap.set("i", "<C-s>", function() vim.cmd("w") end)
 
 -- Toggles quickfix
 vim.keymap.set("n", "<leader>qf", function() quickfix_utils.toggle() end, { silent = true })
