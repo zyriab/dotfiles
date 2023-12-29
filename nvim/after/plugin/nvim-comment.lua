@@ -1,5 +1,17 @@
 local nvim_comment = require("nvim_comment")
 
+-- Adding custom filetypes
+vim.api.nvim_create_augroup("CommentToggleGroup", { clear = true })
+
+-- SQL
+vim.api.nvim_create_autocmd({"BufEnter", "BufFilePost"}, {
+  group = "CommentToggleGroup",
+  pattern = {"*.sql"},
+  callback = function()
+    vim.api.nvim_buf_set_option(0, "commentstring", "-- %s")
+  end
+})
+
 vim.keymap.set("n", "<C-/>", function()
     vim.cmd("CommentToggle")
 end,
