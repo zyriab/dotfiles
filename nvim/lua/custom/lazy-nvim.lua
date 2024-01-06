@@ -60,13 +60,13 @@ local plugins = {
         },
         config = true,
     },
-    -- {
-    --     "github/copilot.vim"
-    -- },
     {
-        "codota/tabnine-nvim",
-        build = "./dl_binaries.sh"
+        "github/copilot.vim"
     },
+    -- {
+    --     "codota/tabnine-nvim",
+    --     build = "./dl_binaries.sh"
+    -- },
     {
         "mhartington/formatter.nvim"
     },

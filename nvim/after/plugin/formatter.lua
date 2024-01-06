@@ -13,6 +13,14 @@ local function prettier()
     }
 end
 
+local function c_format()
+    return {
+        exe = "clang-format",
+        args = { "-assume-filename=" .. vim.api.nvim_buf_get_name(0) },
+        stdin = true
+    }
+end
+
 local function go_format()
     return {
         -- gofmt
