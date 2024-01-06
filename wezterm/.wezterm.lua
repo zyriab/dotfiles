@@ -33,7 +33,7 @@ config.mouse_wheel_scrolls_tabs = false
 config.show_new_tab_button_in_tab_bar = false
 
 -- Keymaps
-config.leader = { key = " ", mods = "CTRL" }
+config.leader = { key = " ", mods = "ALT" }
 config.keys = {
     { key = "q", mods = "LEADER",     action = act.CloseCurrentPane({ confirm = true }), },
     { key = "n", mods = "SHIFT|CTRL", action = act.ToggleFullScreen, },
