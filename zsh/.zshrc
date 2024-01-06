@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export EDITOR=nvim
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -74,16 +76,13 @@ ZSH_THEME="random"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting)
-
+plugins=(git zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# User configuration
+source $ZSH/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
