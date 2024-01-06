@@ -16,8 +16,11 @@ end
 local function c_format()
     return {
         exe = "clang-format",
-        args = { "-assume-filename=" .. vim.api.nvim_buf_get_name(0) },
-        stdin = true
+        args = { 
+            "-assume-filename=" .. vim.api.nvim_buf_get_name(0),
+            "-i",
+        },
+        -- stdin = true
     }
 end
 
@@ -71,7 +74,7 @@ vim.keymap.set("n", "<leader>imp", organize_imports)
 -- Format on save
 vim.api.nvim_create_augroup('format_autogroup', { clear = true })
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     group = "format_autogroup",
     command = "FormatWrite",
 })
@@ -95,6 +98,7 @@ formatter.setup({
             prettier
         },
         go = go_format(),
+        c = c_format(),
         ["*"] = {
             fallback
         }
