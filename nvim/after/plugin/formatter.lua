@@ -16,7 +16,7 @@ end
 local function c_format()
     return {
         exe = "clang-format",
-        args = { 
+        args = {
             "-assume-filename=" .. vim.api.nvim_buf_get_name(0),
             "-i",
         },
@@ -46,7 +46,12 @@ local function go_format()
         function()
             return {
                 exe = "golines",
-                args = { "-m", "80", vim.api.nvim_buf_get_name(0) },
+                args = {
+                    "-m 80",
+                    "-w",
+                    "--chain-split-dots",
+                    vim.api.nvim_buf_get_name(0)
+                },
                 stdin = true
             }
         end
