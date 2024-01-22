@@ -2,11 +2,13 @@ DEV_PATH="/mnt/DATA/dev"
 
 ### Utils
 alias bat="upower -i `upower -e | grep 'BAT'`"
-# alias nvim="/usr/local/bin/nvim.appimage"
+alias nvim="/usr/local/bin/nvim.appimage"
 alias v="nvim ."
 alias vc="nvim ~/.config/nvim"
 alias gg="lazygit"
 alias rst="source ~/.zshrc"
+alias gcg="git config --edit --global"
+alias gcl="git config --edit --local"
 
 ### Prog
 alias got="go test ./..."
