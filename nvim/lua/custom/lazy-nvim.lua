@@ -47,6 +47,15 @@ local plugins = {
     {
         "stevearc/dressing.nvim"
     },
+    -- WEB
+    {
+        'barrett-ruth/live-server.nvim',
+        build = 'npm install -g live-server',
+        config = function()
+            require('live-server').setup()
+        end
+
+    },
     -- EDITOR UPGRADES
     {
         "anthony-halim/bible-verse.nvim",
