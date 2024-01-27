@@ -96,6 +96,13 @@ local plugins = {
         "terrortylor/nvim-comment"
     },
     {
+        "kkoomen/vim-doge",
+        event = "BufRead",
+        config = function()
+            vim.cmd("call doge#install()")
+        end,
+    },
+    {
         "kevinhwang91/nvim-ufo",
         dependencies = "kevinhwang91/promise-async"
     },
@@ -199,7 +206,7 @@ local plugins = {
         }
     },
     {
-        "zyriabdsgn/vim-dbml"
+        "zyriab/vim-dbml"
     },
     -- TREESITTER
     -- TODO: move config to its dedicated file in nvim/after/treesitter.lua
@@ -227,6 +234,12 @@ local plugins = {
         },
         opts = {
             highlight = { enable = true },
+            inject = {
+                enable = true,
+                languages = {
+                    javascript = { 'jsdoc', 'html', 'comment' }
+                }
+            },
             indent = { enable = true },
             incremental_selection = {
                 enable = true,
@@ -272,5 +285,9 @@ local plugins = {
 
 
 local opts = {}
+
+-- HACK: disable mappings for vim-doge
+            vim.g.doge_enable_mappings = 0
+            vim.g.doge_mapping = "<leader>g"
 
 require("lazy").setup(plugins, opts)
