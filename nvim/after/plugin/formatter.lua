@@ -8,7 +8,11 @@ end
 local function prettier()
     return {
         exe = "prettier",
-        args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+        args = {
+            "--write",
+            "--stdin-filepath",
+            vim.api.nvim_buf_get_name(0)
+        },
         stdin = true
     }
 end
@@ -79,7 +83,7 @@ vim.keymap.set("n", "<leader>imp", organize_imports)
 -- Format on save
 vim.api.nvim_create_augroup('format_autogroup', { clear = true })
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     group = "format_autogroup",
     command = "FormatWrite",
 })
@@ -100,6 +104,21 @@ formatter.setup({
             prettier
         },
         javascript = {
+            prettier
+        },
+        html = {
+            prettier
+        },
+        css = {
+            prettier
+        },
+        json = {
+            prettier
+        },
+        yaml = {
+            prettier
+        },
+        toml = {
             prettier
         },
         go = go_format(),
