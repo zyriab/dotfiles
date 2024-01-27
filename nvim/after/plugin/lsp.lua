@@ -1,7 +1,7 @@
 local lsp = require("lsp-zero")
 local cmp = require("cmp")
 local neodev = require("neodev")
--- local lspconfig = require("lspconfig")
+local lspconfig = require("lspconfig")
 
 lsp.preset("recommended")
 
@@ -145,6 +145,14 @@ lsp.on_attach(function(_, bufnr)
     -- <Ctrl-d>: Scroll down the documentation window.
     -- <Ctrl-u>: Scroll up the documentation window.
 end)
+
+lspconfig.tsserver.setup({
+    settings = {
+        implicitProjectConfiguration = {
+            checkJs = true
+        },
+    }
+})
 
 lsp.setup()
 
