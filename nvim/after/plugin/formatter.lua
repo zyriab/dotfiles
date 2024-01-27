@@ -94,37 +94,15 @@ formatter.setup({
     log_level = vim.log.levels.WARN,
 
     filetype = {
-        typescript = {
-            prettier
-        },
-        typescriptreact = {
-            prettier
-        },
-        ['typescript.tsx'] = {
-            prettier
-        },
-        javascript = {
-            prettier
-        },
-        html = {
-            prettier
-        },
-        css = {
-            prettier
-        },
-        json = {
-            prettier
-        },
-        yaml = {
-            prettier
-        },
-        toml = {
-            prettier
-        },
+        typescript = { prettier },
+        typescriptreact = { prettier },
+        ['typescript.tsx'] = { prettier },
+        javascript = { prettier },
+        html = { prettier },
+        css = { prettier },
+        json = { prettier },
         go = go_format(),
         c = c_format(),
-        ["*"] = {
-            fallback
-        }
+        ["*"] = { fallback }
     }
 })
