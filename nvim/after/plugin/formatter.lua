@@ -98,8 +98,6 @@ formatter.setup({
         typescriptreact = { prettier },
         ['typescript.tsx'] = { prettier },
         javascript = { prettier },
-        html = { prettier },
-        css = { prettier },
         json = { prettier },
         go = go_format(),
         c = c_format(),
