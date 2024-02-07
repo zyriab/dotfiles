@@ -15,7 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     -- DEV
-    "folke/neodev.nvim",
+    {
+        "folke/neodev.nvim",
+    },
     {
         "ZyriabDsgn/npm-dap.nvim",
         -- dir = "/mnt/DATA/dev/plugins/npm-dap.nvim"
@@ -72,10 +74,6 @@ local plugins = {
     {
         "github/copilot.vim"
     },
-    -- {
-    --     "codota/tabnine-nvim",
-    --     build = "./dl_binaries.sh"
-    -- },
     {
         "mhartington/formatter.nvim"
     },
@@ -170,6 +168,12 @@ local plugins = {
     {
         "rcarriga/nvim-dap-ui",
         dependencies = "mfussenegger/nvim-dap",
+    },
+    {
+        "theHamsta/nvim-dap-virtual-text",
+    },
+    {
+        "leoluz/nvim-dap-go",
     },
     {
         "mxsdev/nvim-dap-vscode-js",
@@ -287,7 +291,7 @@ local plugins = {
 local opts = {}
 
 -- HACK: disable mappings for vim-doge
-            vim.g.doge_enable_mappings = 0
-            vim.g.doge_mapping = "<leader>g"
+vim.g.doge_enable_mappings = 0
+vim.g.doge_mapping = "<leader>g"
 
 require("lazy").setup(plugins, opts)
