@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local act = wezterm.action
+local mux = wezterm.mux
 
 local function is_linux()
     return io.popen("uname -s"):read() == "Linux"
@@ -17,15 +18,19 @@ config.audible_bell = "Disabled"
 
 -- Font
 config.font = wezterm.font "FiraMono Nerd Font Mono"
+
 if is_linux() then
     config.font_size = 10.3
+    config.window_background_opacity = 0.85
 else
     config.font_size = 11.0
+    config.window_background_opacity = 0.45
+    config.macos_window_background_blur = 30
 end
 
 -- Colors
-config.window_background_opacity = 0.85
 config.color_scheme = "github_dark_colorblind"
+
 
 -- Tab bar
 config.use_fancy_tab_bar = false

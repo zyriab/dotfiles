@@ -1,8 +1,8 @@
-DEV_PATH="/mnt/DATA/dev"
+DEV_PATH="$HOME/Developer"
 
 ### Utils
-alias bat="upower -i `upower -e | grep 'BAT'`"
-alias nvim="/usr/local/bin/nvim.appimage"
+# alias nvim="/usr/local/bin/nvim.appimage"
+alias vim="nvim"
 alias v="nvim ."
 alias vc="nvim ~/.config/nvim"
 alias gg="lazygit"
