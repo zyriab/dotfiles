@@ -65,6 +65,9 @@ return {
                     CursorLine = { bg = colors1.sel1 },
                     ColorColumn = { bg = colors2.bg1 },
 
+                    Search = { bg = "#ef0fff", fg = "#ffffff" },
+                    IncSearch = { bg = "#38d878", fg = "#000000" },
+
                     -- Indent-blankline
                     IblScope = { fg = colors1.syntax.func },
                     IblIndent = { fg = colors1.fg3 },
