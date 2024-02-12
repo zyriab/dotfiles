@@ -65,6 +65,7 @@ return {
                     CursorLine = { bg = colors1.sel1 },
                     ColorColumn = { bg = colors2.bg1 },
 
+                    -- Based on Firefox dev edition
                     Search = { bg = "#ef0fff", fg = "#ffffff" },
                     IncSearch = { bg = "#38d878", fg = "#000000" },
 
