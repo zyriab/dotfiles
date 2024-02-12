@@ -1,4 +1,5 @@
 return {
+    require("plugins.editor.tree-sitter"),
     require("plugins.editor.nvim-cmp"),
     require("plugins.editor.indent-blankline"),
     require("plugins.editor.nvim-autopairs"),
