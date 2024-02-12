@@ -19,7 +19,8 @@ return {
         vim.keymap.set("n", "<leader>ss", function()
             session_lens.search_session({
                 path_display = { "shorten" },
-                preview = { hide_on_startup = true },
+                previewer = false,
+                prompt_title = "Restore Session",
             })
         end)
     end,
