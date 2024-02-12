@@ -1,12 +1,3 @@
--- TODO(incline):
--- Always show on `nofile` buffertype
--- if `nofile` buffertype, do not use bold and italic
--- if `nofile` buffertype, span the entire width
--- As of now, this is seriously buggy
---
--- "dapui_watches", "dapui_breakpoints",
--- "dapui_scopes", "dapui_console",
--- "dapui_stacks", "dap-repl"
 return {
     "b0o/incline.nvim",
     event = "VeryLazy",
@@ -59,7 +50,7 @@ return {
                     },
                 },
             },
-            render = render.get,
+            render = render,
         })
     end,
 }
