@@ -10,6 +10,9 @@ return {
         vim.opt.foldlevelstart = 99
         vim.opt.foldenable = true
 
+        -- Setting the folds' characters
+        vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+
         vim.keymap.set("n", "zR", ufo.openAllFolds, { desc = "[Z][R] Open all folds" })
         vim.keymap.set("n", "zM", ufo.closeAllFolds, { desc = "[Z][M] Close all folds" })
 
