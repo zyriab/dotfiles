@@ -5,8 +5,12 @@ return {
     config = function()
         local harpoon = require("harpoon")
 
-        ---@diagnostic disable-next-line: missing-parameter
-        harpoon:setup()
+        harpoon:setup({
+            settings = {
+                save_on_toggle = true,
+                sync_on_ui_close = true,
+            },
+        })
 
         vim.keymap.set("n", "<leader>a", function()
             harpoon:list():append()
