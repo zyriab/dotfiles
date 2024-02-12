@@ -1,5 +1,3 @@
-local M = {}
-
 local function get_git_diff(buf)
     local icons = { removed = "", changed = "", added = "" }
     local signs = vim.b[buf].gitsigns_status_dict
@@ -34,10 +32,14 @@ local function get_diagnostic_label(buf)
     return label
 end
 
-M.get = function(props)
+local function render(props)
+    local dapui_filetypes = require("utils.dapui-filetypes")
+    local filetype = vim.api.nvim_buf_get_option(props.buf, "filetype")
     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
     local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
-    local text_styling = vim.bo[props.buf].modified and "bold,italic" or "bold"
+    local text_styling = (vim.tbl_contains(dapui_filetypes, filetype) == false and vim.bo[props.buf].modified)
+            and "bold,italic"
+        or "bold"
 
     local diag_label = get_diagnostic_label(props.buf)
     local git_diff = get_git_diff(props.buf)
@@ -53,4 +55,5 @@ M.get = function(props)
         " ",
     }
 end
-return M
+
+return render
