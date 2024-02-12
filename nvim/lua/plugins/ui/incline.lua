@@ -24,7 +24,7 @@ return {
             },
             ignore = {
                 buftypes = {},
-                -- filetypes = {},
+                filetypes = { "NvimTree" },
                 floating_wins = true,
                 unlisted_buffers = false,
                 -- wintypes = {},
