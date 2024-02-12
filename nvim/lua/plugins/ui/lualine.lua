@@ -27,8 +27,6 @@ return {
         custom_theme.insert = tint(theme_palette.yellow.base)
         custom_theme.visual = tint(theme_spec.sel0)
 
-        -- vim.cmd("echo " .. theme_spec.sel1)
-
         lualine.setup({
             options = {
                 theme = custom_theme,
