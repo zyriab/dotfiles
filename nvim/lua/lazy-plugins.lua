@@ -10,6 +10,9 @@ lazy.setup({
     -- Nicer vim.ui interfaces
     "stevearc/dressing.nvim",
 
+    -- Highlight matching words under cursor
+    "RRethy/vim-illuminate",
+
     -- Support for DBML files
     "zyriab/vim-dbml",
 

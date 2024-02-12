@@ -56,14 +56,23 @@ return {
         local colors1 = palette1.generate_spec(palette1.palette)
         local colors2 = palette2.generate_spec(palette2.palette)
 
+        local matching_highlight_color = colors2.sel2
+
         theme.setup({
             palette = {},
             groups = {
                 all = {
                     CursorLine = { bg = colors1.sel1 },
                     ColorColumn = { bg = colors2.bg1 },
+
+                    -- Indent-blankline
                     IblScope = { fg = colors1.syntax.func },
                     IblIndent = { fg = colors1.fg3 },
+
+                    -- Illuminate
+                    IlluminatedWordText = { gui = "NONE", bg = matching_highlight_color },
+                    IlluminatedWordRead = { gui = "NONE", bg = matching_highlight_color },
+                    IlluminatedWordWrite = { gui = "NONE", bg = matching_highlight_color },
                 },
             },
             options = {
