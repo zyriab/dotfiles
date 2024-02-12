@@ -7,16 +7,30 @@ return {
         local session_lens = require("auto-session.session-lens")
         local telescope = require("telescope")
         local lualine = require("lualine")
+        local dapui = require("dapui")
+
+        local function restore_nvim_tree()
+            local nvim_tree = require("nvim-tree")
+            nvim_tree.change_dir(vim.fn.getcwd())
+            nvim_tree.refresh()
+        end
 
         ---@diagnostic disable-next-line: missing-fields
         auto_session.setup({
             -- refresh lualine so the new session name is displayed in the status bar
             post_cwd_changed_hook = lualine.refresh,
+            -- Closes dapui before saving the session
+            pre_save_cmds = { dapui.close },
+            bypass_session_save_filetypes = {
+                "noice",
+                "notify",
+                "NvimTree",
+            },
         })
 
         telescope.load_extension("session-lens")
 
-        vim.keymap.set("n", "<leader>ss", function()
+        vim.keymap.set("n", "<C-s>", function()
             session_lens.search_session({
                 path_display = { "shorten" },
                 previewer = false,
