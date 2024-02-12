@@ -30,15 +30,16 @@ return {
                 -- wintypes = {},
             },
             window = {
-                zindex = 51,
-                width = "fill",
+                zindex = 49,
+                -- width = "fill",
+                width = "fit",
                 margin = {
-                    vertical = 0,
-                    horizontal = 0,
+                    vertical = 1,
+                    horizontal = 1,
                 },
                 placement = {
                     vertical = "bottom",
-                    horizontal = "left",
+                    horizontal = "right",
                 },
                 winhighlight = {
                     NormalNC = {
@@ -50,7 +51,7 @@ return {
                 groups = {
                     InclineNormal = {
                         default = true,
-                        group = "InclineNormalFloat",
+                        group = "IncineNormalFloat",
                     },
                     InclineNormalNC = {
                         default = true,

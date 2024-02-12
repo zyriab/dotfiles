@@ -41,7 +41,7 @@ M.get = function(props)
 
     local diag_label = get_diagnostic_label(props.buf)
     local git_diff = get_git_diff(props.buf)
-    local icon = { (ft_icon or ""), " ", guifg = ft_color, guibg = "none" }
+    local icon = ft_icon and { ft_icon, " ", guifg = ft_color, guibg = "none" } or ""
     local name = { filename, gui = text_styling }
 
     return {
