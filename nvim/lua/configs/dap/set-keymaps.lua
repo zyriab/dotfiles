@@ -10,4 +10,5 @@ return function()
     vim.keymap.set("n", "<leader>B", function()
         dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
     end, { desc = "Debug: Set Breakpoint" })
+    vim.keymap.set("n", "<leader>cb", dap.clear_breakpoints, { desc = "Debug: [C]lear [B]reakpoints" })
 end
