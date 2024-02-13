@@ -57,6 +57,10 @@ return {
         local colors2 = palette2.generate_spec(palette2.palette)
 
         local matching_highlight_color = colors2.sel2
+        local fluo_pk = "#ef0fff"
+        local fluo_gr = "#38d878"
+        local blk = "#000000"
+        local wht = "#ffffff"
 
         theme.setup({
             palette = {},
@@ -65,9 +69,9 @@ return {
                     CursorLine = { bg = colors1.sel1 },
                     ColorColumn = { bg = colors2.bg1 },
 
-                    -- Based on Firefox dev edition
-                    Search = { bg = "#ef0fff", fg = "#ffffff" },
-                    IncSearch = { bg = "#38d878", fg = "#000000" },
+                    -- Inspired by Firefox dev edition
+                    Search = { bg = fluo_pk, fg = wht },
+                    IncSearch = { bg = fluo_gr, fg = blk },
 
                     -- Indent-blankline
                     IblScope = { fg = colors1.syntax.func },
@@ -77,6 +81,12 @@ return {
                     IlluminatedWordText = { gui = "NONE", bg = matching_highlight_color },
                     IlluminatedWordRead = { gui = "NONE", bg = matching_highlight_color },
                     IlluminatedWordWrite = { gui = "NONE", bg = matching_highlight_color },
+
+                    -- Lightbulb
+                    LightBulbSign = { fg = fluo_gr },
+
+                    -- LspSignature
+                    LspSignatureActiveParameter = { bg = colors1.sel2, fg = blk },
                 },
             },
             options = {
