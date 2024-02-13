@@ -5,25 +5,28 @@ local sign = vim.fn.sign_define
 
 return function()
     -- Set up the sign and HL groups for points
-    sign("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })
-    sign("DapBreakpointCondition", { text = "󱉎", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+    sign(
+        "DapBreakpoint",
+        { text = "󰃤", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+    )
+    sign("DapBreakpointCondition", { text = "", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
     sign("DapLogPoint", { text = "󰛓", texthl = "DapLogPoint", linehl = "", numhl = "" })
-    sign("DapStopped", { text = "󰋇", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
-    sign("DapBreakpointRejected", { text = "󱏶", texthl = "DapBreakpointRejected", linehl = "", numhl = "" })
+    sign("DapStopped", { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
+    sign("DapBreakpointRejected", { text = "", texthl = "DapBreakpointRejected", linehl = "", numhl = "" })
 
     dapui.setup({
         icons = { expanded = "", collapsed = "", current_frame = "󰸳" },
         controls = {
             icons = {
-                pause = "⏸",
-                play = "▶",
-                step_into = "⏎",
-                step_over = "⏭",
-                step_out = "⏮",
-                step_back = "b",
-                run_last = "▶▶",
-                terminate = "⏹",
-                disconnect = "⏏",
+                pause = "",
+                play = "",
+                step_into = "",
+                step_over = "",
+                step_out = "",
+                step_back = "",
+                run_last = "",
+                terminate = "",
+                disconnect = "",
             },
         },
     })
