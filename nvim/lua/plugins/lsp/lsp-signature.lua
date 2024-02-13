@@ -5,8 +5,7 @@ return {
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         hint_prefix = "🦊 ",
         doc_lines = 0,
-        handler_opts = {
-            border = "rounded",
-        },
+        handler_opts = { border = "rounded" },
+        hi_parameter = "LspSignatureActiveParameter",
     },
 }
