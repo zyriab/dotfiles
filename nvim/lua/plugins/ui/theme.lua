@@ -87,6 +87,9 @@ return {
 
                     -- LspSignature
                     LspSignatureActiveParameter = { bg = colors1.sel2, fg = blk },
+
+                    -- DAP
+                    DapStopped = { bg = colors1.sel2, fg = blk },
                 },
             },
             options = {
