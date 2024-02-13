@@ -19,7 +19,7 @@ return {
     },
     config = function()
         local telescope = require("telescope")
-        local load_extensions = require("configs.telescope.load_extensions")
+        local load_extensions = require("configs.telescope.load-extensions")
         local live_grep_git_root = require("configs.telescope.live-grep-git-root")
         local set_keymaps = require("configs.telescope.set-keymaps")
 
