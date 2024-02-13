@@ -3,15 +3,13 @@ local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")
 local telescope_live_grep_open_files = require("configs.telescope.live-grep-open-files")
 
-local M = {}
-
 local current_buffer_fuzzy_find_config = {
     previewer = false,
 }
 
 local notify_config = { layout_strategy = "vertical" }
 
-M.setup = function()
+return function()
     -- See `:help telescope.builtin`
     vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind existing [B]uffers" })
@@ -46,5 +44,3 @@ M.setup = function()
     -- Grep client in all files under any components directory: "client" --iglob **/components/**
     -- For more info, look into `ripgrep`
 end
-
-return M

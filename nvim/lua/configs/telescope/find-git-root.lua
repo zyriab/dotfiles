@@ -1,6 +1,6 @@
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
-local function find_git_root()
+return function()
     -- Use the current buffer's path as the starting point for the git search
     local current_file = vim.api.nvim_buf_get_name(0)
     local current_dir
@@ -21,5 +21,3 @@ local function find_git_root()
     end
     return git_root
 end
-
-return find_git_root

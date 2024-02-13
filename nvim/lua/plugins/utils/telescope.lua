@@ -19,9 +19,9 @@ return {
     },
     config = function()
         local telescope = require("telescope")
-        local extensions = require("configs.telescope.extensions")
+        local load_extensions = require("configs.telescope.load_extensions")
         local live_grep_git_root = require("configs.telescope.live-grep-git-root")
-        local keymaps = require("configs.telescope.keymaps")
+        local set_keymaps = require("configs.telescope.set-keymaps")
 
         -- See `:help telescope` and `:help telescope.setup()`
         telescope.setup({
@@ -30,10 +30,10 @@ return {
             },
         })
 
-        extensions.setup()
+        load_extensions()
 
         vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
 
-        keymaps.setup()
+        set_keymaps()
     end,
 }
