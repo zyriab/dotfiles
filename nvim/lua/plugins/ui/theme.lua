@@ -90,6 +90,9 @@ return {
 
                     -- DAP
                     DapStopped = { bg = colors1.sel2, fg = blk },
+                    DapBreakpointCondition = { fg = colors1.diag.hint },
+                    DapBreakpointRejected = { fg = colors1.diag.error },
+                    DapLogPoint = { fg = colors1.diag.info },
                 },
             },
             options = {
