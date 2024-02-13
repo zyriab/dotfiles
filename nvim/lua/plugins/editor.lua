@@ -9,4 +9,5 @@ return {
     require("plugins.editor.nvim-ts-autotag"),
     require("plugins.editor.nvim-ufo"),
     require("plugins.editor.todo-comments"),
+    require("plugins.editor.nvim-lightbulb"),
 }
