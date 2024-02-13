@@ -5,8 +5,6 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local lspconfig = require("lspconfig")
 local on_attach = require("configs.lsp.on-attach")
 
-local M = {}
-
 -- Enable the following language servers
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
@@ -46,7 +44,7 @@ local servers = {
     },
 }
 
-M.setup = function()
+return function()
     -- mason-lspconfig requires that these setup functions are called in this order
     -- before setting up the servers.
     mason.setup()
@@ -74,5 +72,3 @@ M.setup = function()
         end,
     })
 end
-
-return M

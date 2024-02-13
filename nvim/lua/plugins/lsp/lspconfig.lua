@@ -5,25 +5,21 @@ return {
         -- Automatically install LSPs to stdpath for neovim
         {
             "williamboman/mason.nvim",
-            opts = {
-                ui = {
-                    border = "rounded",
-                },
-            },
+            opts = { ui = { border = "rounded" } },
             config = true,
         },
         "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
     },
     config = function()
-        local autoformat = require("configs.lsp.autoformat")
-        local register_keys = require("configs.lsp.register-keys")
-        local servers = require("configs.lsp.servers")
-        local ui_config = require("configs.lsp.ui-config")
+        local setup_autoformat = require("configs.lsp.setup-autoformat")
+        local register_which_keys = require("configs.lsp.register-which-keys")
+        local setup_servers = require("configs.lsp.setup-servers")
+        local configure_ui = require("configs.lsp.configure-ui")
 
-        register_keys.setup()
-        autoformat.setup()
-        servers.setup()
-        ui_config.setup()
+        register_which_keys()
+        setup_autoformat()
+        setup_servers()
+        configure_ui()
     end,
 }

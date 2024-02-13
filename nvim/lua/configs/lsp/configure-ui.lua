@@ -1,6 +1,4 @@
-local M = {}
-
-M.setup = function()
+return function()
     -- [[ Borders ]]
     local _border = "rounded"
 
@@ -17,5 +15,3 @@ M.setup = function()
         border = _border,
     }
 end
-
-return M

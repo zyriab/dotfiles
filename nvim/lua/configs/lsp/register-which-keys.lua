@@ -1,8 +1,5 @@
 -- document existing key chains
-
-local M = {}
-
-M.setup = function()
+return function()
     require("which-key").register({
         ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
         ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
@@ -20,5 +17,3 @@ M.setup = function()
         ["<leader>h"] = { "Git [H]unk" },
     }, { mode = "v" })
 end
-
-return M

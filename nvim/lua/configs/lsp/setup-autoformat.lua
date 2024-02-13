@@ -5,8 +5,6 @@
 -- Commands:
 --  Use :FormatToggle to toggle autoformatting on or off
 
-local M = {}
-
 local function run_client_extra_formatting(client)
     local name = client.name
 
@@ -37,7 +35,7 @@ local function run_client_extra_formatting(client)
     end
 end
 
-M.setup = function()
+return function()
     local format_is_enabled = true
 
     vim.api.nvim_create_user_command("FormatToggle", function()
@@ -97,5 +95,3 @@ M.setup = function()
         end,
     })
 end
-
-return M

@@ -1,6 +1,4 @@
-local M = {}
-
-M.setup = function(bufnr)
+return function(bufnr)
     local nmap = function(keys, func, desc)
         if desc then
             desc = "LSP: " .. desc
@@ -42,5 +40,3 @@ M.setup = function(bufnr)
     -- Format
     nmap("<leader>fm", vim.lsp.buf.format, "[F]or[M]at the current buffer with LSP")
 end
-
-return M
