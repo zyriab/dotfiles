@@ -59,9 +59,7 @@
   "vim-dadbod-ui": { "branch": "master", "commit": "165699c573469e6a95b48d35052f848c340c5911" },
   "vim-dbml": { "branch": "master", "commit": "156d574f3838c2694a02b016ff5837de408d64a9" },
   "vim-doge": { "branch": "master", "commit": "622736ca29ecd6e2720623696d48179c4da430ac" },
-  "vim-fugitive": { "branch": "master", "commit": "ddedd5bd20b030dc6cbc8d4a83a4de5af77f8054" },
   "vim-illuminate": { "branch": "master", "commit": "305bf07b919ac526deb5193280379e2f8b599926" },
-  "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
