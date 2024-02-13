@@ -2,12 +2,15 @@ return {
     "mfussenegger/nvim-dap",
     dependencies = {
         "rcarriga/nvim-dap-ui",
-        "theHamsta/nvim-dap-virtual-text",
-        "zyriab/npm-dap.nvim",
+        {
+            "theHamsta/nvim-dap-virtual-text",
+            opts = {},
+        },
 
         "williamboman/mason.nvim",
         "jay-babu/mason-nvim-dap.nvim",
 
+        "zyriab/npm-dap.nvim",
         "leoluz/nvim-dap-go",
         {
             "mxsdev/nvim-dap-vscode-js",
@@ -18,10 +21,13 @@ return {
         },
     },
     config = function()
-        local dap = require("dap")
+        local mason_dap = require("mason-nvim-dap")
         local configure_ui = require("configs.dap.configure-ui")
+        local set_keymaps = require("configs.dap.set-keymaps")
+        local dap_go = require("dap-go")
+        local setup_js_dap = require("configs.dap.setup-js-dap")
 
-        require("mason-nvim-dap").setup({
+        mason_dap.setup({
             -- Makes a best effort to setup the various debuggers with
             -- reasonable debug configurations
             automatic_setup = true,
@@ -36,9 +42,11 @@ return {
             },
         })
 
+        set_keymaps()
         configure_ui()
 
-        -- Install golang specific config
-        require("dap-go").setup()
+        -- Setup language specific stuff
+        dap_go.setup()
+        setup_js_dap()
     end,
 }
