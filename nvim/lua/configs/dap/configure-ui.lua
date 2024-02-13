@@ -1,8 +1,9 @@
 ---@diagnostic disable: missing-fields
 local dapui = require("dapui")
+local dap = require("dap")
 local sign = vim.fn.sign_define
 
-return function(dap)
+return function()
     -- Set up the sign and HL groups for points
     sign("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })
     sign("DapBreakpointCondition", { text = "󱉎", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
