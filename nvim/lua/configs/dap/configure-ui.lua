@@ -1,6 +1,7 @@
 ---@diagnostic disable: missing-fields
-local dapui = require("dapui")
 local dap = require("dap")
+local dapui = require("dapui")
+local widgets = require("dap.ui.widgets")
 local sign = vim.fn.sign_define
 
 return function()
@@ -11,7 +12,7 @@ return function()
     )
     sign("DapBreakpointCondition", { text = "", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
     sign("DapLogPoint", { text = "󰛓", texthl = "DapLogPoint", linehl = "", numhl = "" })
-    sign("DapStopped", { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
+    sign("DapStopped", { text = "󰓗", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
     sign("DapBreakpointRejected", { text = "", texthl = "DapBreakpointRejected", linehl = "", numhl = "" })
 
     dapui.setup({
@@ -33,6 +34,7 @@ return function()
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     vim.keymap.set("n", "<F7>", dapui.toggle, { desc = "Debug: See last session result." })
+    vim.keymap.set({ "n", "v" }, "<Leader>dk", widgets.hover, { desc = "Debug: Open DAP hover menu" })
 
     dap.listeners.after.event_initialized["dapui_config"] = dapui.open
     dap.listeners.before.event_terminated["dapui_config"] = dapui.close
