@@ -4,6 +4,7 @@ return function()
 
     vim.diagnostic.config({
         float = { border = _border },
+        virtual_text = false, -- LSP_lines is used instead
     })
 
     -- This part is actually taken care of by Noice!
