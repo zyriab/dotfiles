@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch
 return {
     "rmagatti/auto-session",
     lazy = true,
@@ -8,35 +9,37 @@ return {
         local telescope = require("telescope")
         local lualine = require("lualine")
         local dapui = require("dapui")
-
-        local function restore_nvim_tree()
-            local nvim_tree = require("nvim-tree")
-            nvim_tree.change_dir(vim.fn.getcwd())
-            nvim_tree.refresh()
-        end
+        local filetypes = require("utils.filetypes")
 
         ---@diagnostic disable-next-line: missing-fields
         auto_session.setup({
             -- refresh lualine so the new session name is displayed in the status bar
             post_cwd_changed_hook = lualine.refresh,
             -- Closes dapui before saving the session
-            pre_save_cmds = { dapui.close },
+            pre_save_cmds = {
+                "cclose",
+                function()
+                    pcall(dapui.close)
+                    pcall(vim.cmd, "NvimTreeClose")
+                    pcall(vim.cmd, "OutlineClose")
+                end,
+            },
             bypass_session_save_filetypes = {
-                "noice",
-                "notify",
-                "NvimTree",
+                filetypes.noice,
+                filetypes.notify,
+                filetypes.nvimtree,
             },
         })
 
         telescope.load_extension("session-lens")
 
-        vim.keymap.set("n", "<C-s>", function()
+        vim.keymap.set("n", "<leader>ss", function()
             session_lens.search_session({
                 path_display = { "shorten" },
                 previewer = false,
                 prompt_title = "Restore Session",
             })
-        end)
+        end, { desc = "[S]earch [S]essions" })
     end,
     init = function()
         ---@url https://github.com/rmagatti/auto-session/issues/223#issuecomment-1666658887
