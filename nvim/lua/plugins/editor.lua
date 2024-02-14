@@ -10,4 +10,5 @@ return {
     require("plugins.editor.nvim-ufo"),
     require("plugins.editor.todo-comments"),
     require("plugins.editor.nvim-lightbulb"),
+    require("plugins.editor.lsp-lines"),
 }
