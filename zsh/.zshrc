@@ -7,8 +7,14 @@ export TERM=wezterm
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+### Neovim w/ Bob (version manager)
+export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+
+export BOB_CONFIG="$HOME/.config/bob/config.toml"
+
+### Go
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
