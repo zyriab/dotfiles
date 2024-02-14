@@ -33,8 +33,8 @@ local function get_diagnostic_label(buf)
 end
 
 local function render(props)
-    local dapui_filetypes = require("utils.dapui-filetypes")
-    local filetype = vim.api.nvim_buf_get_option(props.buf, "filetype")
+    local dapui_filetypes = require("utils.filetypes").dapui
+    local filetype = vim.api.nvim_get_option_value("filetype", { buf = props.buf })
     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
     local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
     local text_styling = (vim.tbl_contains(dapui_filetypes, filetype) == false and vim.bo[props.buf].modified)
