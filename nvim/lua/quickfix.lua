@@ -1,13 +1,14 @@
-local function toggle()
-    if #vim.fn.filter(vim.fn.getwininfo(), "v:val.quickfix == 1") == 0 then
-        vim.cmd("copen")
-    else
-        vim.cmd("cclose")
-    end
-end
+-- local function toggle()
+--     if #vim.fn.filter(vim.fn.getwininfo(), "v:val.quickfix == 1") == 0 then
+--         vim.cmd("copen")
+--     else
+--         vim.cmd("cclose")
+--     end
+-- end
 
 -- Toggles QuickFix
-vim.keymap.set("n", "<leader>qf", toggle, { silent = true, desc = "Toggle [Q]uick[F]ix" })
+-- Replaced by qf_utils!
+-- vim.keymap.set("n", "<leader>qf", toggle, { silent = true, desc = "Toggle [Q]uick[F]ix" })
 
 -- QuickFix navigation
 vim.keymap.set("n", "]q", function()
