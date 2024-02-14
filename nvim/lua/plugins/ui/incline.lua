@@ -5,6 +5,7 @@ return {
         local incline = require("incline")
         local render = require("configs.incline.render")
         local theme = require("github-theme.palette.github_dark_colorblind")
+        local filetypes = require("utils.filetypes")
         local colors = theme.generate_spec(theme.palette)
 
         incline.setup({
@@ -15,7 +16,7 @@ return {
             },
             ignore = {
                 buftypes = {},
-                filetypes = { "NvimTree" },
+                filetypes = { filetypes.outline, filetypes.nvimtree },
                 floating_wins = true,
                 unlisted_buffers = false,
                 -- wintypes = {},
