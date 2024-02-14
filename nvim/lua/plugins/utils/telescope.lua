@@ -26,7 +26,7 @@ return {
         -- See `:help telescope` and `:help telescope.setup()`
         telescope.setup({
             defaults = {
-                file_ignore_patterns = { "node_modules" },
+                file_ignore_patterns = { "node_modules", "OUTLINE_*" },
             },
         })
 
