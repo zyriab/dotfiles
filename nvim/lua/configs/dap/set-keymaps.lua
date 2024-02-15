@@ -1,14 +1,27 @@
 local dap = require("dap")
 
 return function()
-    vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
-    vim.keymap.set("n", "<leader><F5>", dap.terminate, { desc = "Debug: Start/Continue" })
+    -- HACK(DAP): Until I write my own Go config,
+    -- easier to alternate between `dap.continue()` and `:GoDebug`
+    vim.keymap.set("n", "<F5>", function()
+        local filetype = vim.bo.filetype
+
+        if filetype ~= "go" or dap.session() ~= nil then
+            dap.continue()
+            return
+        end
+
+        -- Launching a new session using `go.nvim` DAP config
+        vim.cmd("GoDebug")
+    end, { desc = "Debug: Start/Continue" })
+
+    vim.keymap.set("n", "<leader><F5>", dap.terminate, { desc = "Debug: Teminate session" })
     vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
     vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
     vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
-    vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+    vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle [B]reakpoint" })
     vim.keymap.set("n", "<leader>B", function()
         dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-    end, { desc = "Debug: Set Breakpoint" })
+    end, { desc = "Debug: Set [B]reakpoint" })
     vim.keymap.set("n", "<leader>cb", dap.clear_breakpoints, { desc = "Debug: [C]lear [B]reakpoints" })
 end
