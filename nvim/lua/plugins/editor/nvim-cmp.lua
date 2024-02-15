@@ -1,5 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
+    lazy = true,
     dependencies = {
         -- Snippet Engine & its associated nvim-cmp source
         {
@@ -31,9 +32,9 @@ return {
         local cmp = require("cmp")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
+        local setup_luasnip = require("configs.cmp.setup-luasnip")
 
-        require("luasnip.loaders.from_vscode").lazy_load()
-        luasnip.config.setup()
+        setup_luasnip()
 
         local select_opts = { behavior = cmp.SelectBehavior.Select }
 
