@@ -14,7 +14,9 @@ export BOB_CONFIG="$HOME/.config/bob/config.toml"
 
 ### Go
 export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+export GOBIN="$GOPATH/bin"
+export PATH="$PATH:$GOBIN"
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
