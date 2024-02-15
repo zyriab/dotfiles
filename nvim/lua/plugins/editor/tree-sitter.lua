@@ -26,6 +26,8 @@ return {
                     "bash",
                     "html",
                     "css",
+                    "jsdoc",
+                    "comment",
                 },
 
                 -- Autoinstall languages that are not installed
