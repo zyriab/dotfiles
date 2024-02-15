@@ -8,22 +8,18 @@ return {
 
             neogen.setup({
                 enabled = true,
-                languages = {
-                    lua = {
-                        snippet_engine = "luasnip",
-                    },
-                },
+                snippet_engine = "luasnip",
             })
 
-            vim.keymap.set(
-                "n",
-                "<leader>g",
-                neogen.generate,
-                { desc = "[G]enerate type annotations (JS/Lua)", silent = true }
-            )
+            vim.keymap.set("n", "<leader>doc", neogen.generate, { desc = "Generate type [DOC]umentation" })
 
-            vim.keymap.set({ "n", "i", "v" }, "<C-l>", neogen.jump_next)
-            vim.keymap.set({ "n", "i", "v" }, "<C-h>", neogen.jump_prev)
+            vim.keymap.set({ "n", "i", "v" }, "<C-l>", neogen.jump_next, { desc = "Type doc: Jump to next annotation" })
+            vim.keymap.set(
+                { "n", "i", "v" },
+                "<C-h>",
+                neogen.jump_prev,
+                { desc = "Type doc: Jump to previous annotation" }
+            )
         end,
     },
 }
