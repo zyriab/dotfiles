@@ -12,4 +12,5 @@ return {
     require("plugins.utils.goto-breakpoints"),
     require("plugins.utils.global-note"),
     require("plugins.utils.outline"),
+    require("plugins.utils.go"),
 }
