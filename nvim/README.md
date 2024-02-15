@@ -1,6 +1,6 @@
 ## Neovim config
 
-Current Neovim config, rewritten early February 2024
+Current Neovim config, rewritten early February 2024  
 *Protanopia-friendly* (red/green colorblindness)
 
 **Current configs:**
