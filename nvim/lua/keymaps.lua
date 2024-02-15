@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "[Y]ank line into OS clipboard
 vim.keymap.set("n", "<leader>yy", "\"+yy", { desc = "[YY]ank line into OS clipboard" })
 
 -- Delete without losing buffer content
--- vim.keymap.set("n", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" })
+vim.keymap.set("n", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" })
 vim.keymap.set("v", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" })
 
 -- Automagically calls `/%s` with currently hovered word pre-entered
@@ -44,9 +44,7 @@ vim.keymap.set("v", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" }
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+    callback = vim.highlight.on_yank,
     group = highlight_group,
     pattern = "*",
 })
