@@ -4,6 +4,7 @@ local mason_lspconfig = require("mason-lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local lspconfig = require("lspconfig")
 local on_attach = require("configs.lsp.on-attach")
+local util = require("lspconfig.util")
 
 -- Enable the following language servers
 --  Add any additional override configuration in the following tables. They will be passed to
@@ -13,7 +14,6 @@ local on_attach = require("configs.lsp.on-attach")
 --  define the property 'filetypes' to the map in question.
 local servers = {
     clangd = {},
-    gopls = {},
     sqlls = {},
     html = { filetypes = { "html" } },
     cssls = {},
@@ -27,6 +27,23 @@ local servers = {
     tailwindcss = {},
     terraformls = {},
     eslint = {},
+
+    -- NOTE(Go): Replaced by Go.nvim until I settle on what I want in my env
+    ---@url https://github.com/golang/tools/tree/master/gopls/doc
+    -- gopls = {
+    --     cmd = { "gopls", "--remote=auto" },
+    --     settings = {
+    --         gopls = {
+    --             gofumpt = true,
+    --         },
+    --         completion = true,
+    --     },
+    --     analyses = {
+    --         unusedwrite = true,
+    --         useany = true,
+    --         unusedvariable = true,
+    --     },
+    -- },
 
     tsserver = {
         implicitProjectConfiguration = {
@@ -44,6 +61,8 @@ local servers = {
     },
 }
 
+local mason_tools_installs = vim.tbl_extend("keep", {}, vim.tbl_keys(servers))
+
 return function()
     -- mason-lspconfig requires that these setup functions are called in this order
     -- before setting up the servers.
@@ -57,7 +76,7 @@ return function()
     capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
     mason_lspconfig.setup({
-        ensure_installed = vim.tbl_keys(servers),
+        ensure_installed = mason_tools_installs,
     })
 
     mason_lspconfig.setup_handlers({
