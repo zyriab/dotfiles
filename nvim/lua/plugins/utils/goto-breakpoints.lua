@@ -1,5 +1,6 @@
 return {
     "ofirgall/goto-breakpoints.nvim",
+    lazy = true,
     config = function()
         local goto_breakpoints = require("goto-breakpoints")
         vim.keymap.set("n", "]b", goto_breakpoints.next, {})
