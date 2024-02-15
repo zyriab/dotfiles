@@ -24,7 +24,7 @@ return {
         local mason_dap = require("mason-nvim-dap")
         local configure_ui = require("configs.dap.configure-ui")
         local set_keymaps = require("configs.dap.set-keymaps")
-        local dap_go = require("dap-go")
+        -- local dap_go = require("dap-go")
         local setup_js_dap = require("configs.dap.setup-js-dap")
 
         mason_dap.setup({
@@ -46,7 +46,8 @@ return {
         configure_ui()
 
         -- Setup language specific stuff
-        dap_go.setup()
+        -- dap_go.setup()
+
         setup_js_dap()
     end,
 }
