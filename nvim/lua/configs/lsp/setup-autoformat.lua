@@ -5,14 +5,27 @@
 -- Commands:
 --  Use :FormatToggle to toggle autoformatting on or off
 
-local function run_client_extra_formatting(client)
+local function run_client_aware_formatting(client)
     local name = client.name
+
+    -- [[ Go ]]
+    if name == "gopls" then
+        -- gofumpt + goimports + golines
+        ---@diagnostic disable-next-line: param-type-mismatch
+        local ok, _ = pcall(vim.cmd, "GoFmt")
+
+        if ok then
+            return
+        end
+    end
 
     -- [[ Lua ]]
     if name == "lua_ls" then
         local ok, stylua = pcall(require, "stylua-nvim")
+
         if ok then
             stylua.format_file()
+            return
         end
     end
 
@@ -20,19 +33,17 @@ local function run_client_extra_formatting(client)
     if name == "tsserver" then
         if vim.fn.executable("prettierd") == 1 then
             vim.cmd("%!prettierd %")
+            return
         end
-
-        -- Need to reload the file if using ESLint 💩
-        -- local eslint_path = vim.fn.glob('./node_modules/.bin/eslint')
-
-        -- if eslint_path ~= '' then
-        --     vim.cmd('%!npx eslint --fix %')
-        -- elseif vim.fn.executable('eslint') == 1 then
-        --     vim.cmd('%!eslint --fix %')
-        -- end
-
-        -- vim.cmd('e!')
     end
+
+    -- [[ Fallback ]]
+    vim.lsp.buf.format({
+        async = false,
+        filter = function(c)
+            return client ~= nil and c.id == client.id
+        end,
+    })
 end
 
 return function()
@@ -82,14 +93,7 @@ return function()
                         return
                     end
 
-                    vim.lsp.buf.format({
-                        async = false,
-                        filter = function(c)
-                            return c.id == client.id
-                        end,
-                    })
-
-                    run_client_extra_formatting(client)
+                    run_client_aware_formatting(client)
                 end,
             })
         end,
