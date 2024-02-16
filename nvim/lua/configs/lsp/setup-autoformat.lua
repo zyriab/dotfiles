@@ -5,53 +5,14 @@
 -- Commands:
 --  Use :FormatToggle to toggle autoformatting on or off
 
-local function run_client_aware_formatting(client)
-    local name = client.name
-
-    -- [[ Go ]]
-    if name == "gopls" then
-        -- gofumpt + goimports + golines
-        ---@diagnostic disable-next-line: param-type-mismatch
-        local ok, _ = pcall(vim.cmd, "GoFmt")
-
-        if ok then
-            return
-        end
-    end
-
-    -- [[ Lua ]]
-    if name == "lua_ls" then
-        local ok, stylua = pcall(require, "stylua-nvim")
-
-        if ok then
-            stylua.format_file()
-            return
-        end
-    end
-
-    -- [[ JS/TS ]]
-    if name == "tsserver" then
-        if vim.fn.executable("prettierd") == 1 then
-            vim.cmd("%!prettierd %")
-            return
-        end
-    end
-
-    -- [[ Fallback ]]
-    vim.lsp.buf.format({
-        async = false,
-        filter = function(c)
-            return client ~= nil and c.id == client.id
-        end,
-    })
-end
+local format_buffer = require("configs.lsp.format-buffer")
 
 return function()
-    local format_is_enabled = true
+    local autoformat_is_enabled = true
 
-    vim.api.nvim_create_user_command("FormatToggle", function()
-        format_is_enabled = not format_is_enabled
-        vim.notify("Setting autoformatting to: " .. tostring(format_is_enabled))
+    vim.api.nvim_create_user_command("AutoFormatToggle", function()
+        autoformat_is_enabled = not autoformat_is_enabled
+        vim.notify("Setting autoformatting to: " .. tostring(autoformat_is_enabled))
     end, {})
 
     -- Create an augroup that is used for managing our formatting autocmds.
@@ -78,6 +39,11 @@ return function()
             local client = vim.lsp.get_client_by_id(client_id)
             local bufnr = args.buf
 
+            if client == nil then
+                vim.notify("Cannot autoformat buffer: LSP client is nil", vim.log.levels.ERROR)
+                return
+            end
+
             -- Only attach to clients that support document formatting
             if not client.server_capabilities.documentFormattingProvider then
                 return
@@ -89,11 +55,11 @@ return function()
                 group = get_augroup(client),
                 buffer = bufnr,
                 callback = function()
-                    if not format_is_enabled then
+                    if not autoformat_is_enabled then
                         return
                     end
 
-                    run_client_aware_formatting(client)
+                    format_buffer(client)
                 end,
             })
         end,
