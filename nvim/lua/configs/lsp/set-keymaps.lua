@@ -1,4 +1,6 @@
 return function(bufnr)
+    local format_buffer = require("configs.lsp.format-buffer")
+
     local nmap = function(keys, func, desc)
         if desc then
             desc = "LSP: " .. desc
@@ -38,5 +40,5 @@ return function(bufnr)
     nmap("<leader>dl", vim.diagnostic.setqflist, "Open [D]iagnostics [L]ist")
 
     -- Format
-    nmap("<leader>fm", vim.lsp.buf.format, "[F]or[M]at the current buffer with LSP")
+    nmap("<leader>fm", format_buffer, "[F]or[M]at the current buffer with LSP")
 end
