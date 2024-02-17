@@ -4,7 +4,6 @@ DEV_PATH="$HOME/Developer"
 # alias nvim="/usr/local/bin/nvim.appimage"
 alias vim="nvim"
 alias v="nvim ."
-alias vc="nvim ~/.config/nvim"
 alias lg="lazygit"
 alias rst="source ~/.zshrc"
 alias gcg="git config --edit --global"
@@ -15,9 +14,6 @@ alias got="go test ./..."
 
 ### Navigation
 alias dev="cd $DEV_PATH"
-alias app="cd $DEV_PATH/apps"
-alias gma="cd $DEV_PATH/games"
-alias plu="cd $DEV_PATH/plugins"
 
 ### Fixes
 alias jy="sudo ~/scripts/init-controller.py"
