@@ -17,6 +17,19 @@ export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
 
+### Rust
+export PATH="$PATH:$HOME/.cargo/bin"
+
+### Luarocks
+export PATH="$PATH:$HOME/.luarocks/bin"
+
+### fzf theme
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#8b949e,hl:#ffffff --color=fg+:#c9d1d9,bg+:#1e4273,hl+:#fdac54 --color=info:#d29922,prompt:#58a6ff,pointer:#a371f7 --color=marker:#ec8e2c,spinner:#6e7681,header:#343941'
+
+### bat theme
+export BAT_THEME="github_dark_colorblind_custom"
+
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -122,3 +135,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 . ~/scripts/scripts.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(zoxide init --cmd cd zsh)"
