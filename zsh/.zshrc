@@ -24,7 +24,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.luarocks/bin"
 
 ### fzf theme
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#8b949e,hl:#ffffff --color=fg+:#c9d1d9,bg+:#1e4273,hl+:#fdac54 --color=info:#d29922,prompt:#58a6ff,pointer:#a371f7 --color=marker:#ec8e2c,spinner:#6e7681,header:#343941'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#6e7681,bg:,hl:#ffffff --color=fg+:#c9d1d9,bg+:#1e4273,hl+:#fdac54 --color=info:#d29922,prompt:#58a6ff,pointer:#a371f7 --color=marker:#ec8e2c,spinner:#6e7681,header:#343941'
 
 ### bat theme
 export BAT_THEME="github_dark_colorblind_custom"
