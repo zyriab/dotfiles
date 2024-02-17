@@ -59,7 +59,7 @@ return function()
                         return
                     end
 
-                    format_buffer(client)
+                    format_buffer()
                 end,
             })
         end,
