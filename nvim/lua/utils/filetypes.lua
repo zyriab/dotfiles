@@ -1,4 +1,5 @@
 return {
+    dashboard = "dashboard",
     outline = "Outline",
     nvimtree = "NvimTree",
     noice = "noice",
