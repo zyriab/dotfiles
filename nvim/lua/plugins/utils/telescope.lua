@@ -49,8 +49,7 @@ return {
                 file_browser = {
                     theme = "ivy",
                     path = PROJECTS_PATH,
-                    prompt_title = "Find Project",
-                    results_title = "Projects 󱜙",
+                    prompt_title = "Projects 󱜙",
                     previewer = false,
                     initial_mode = "normal",
                     mappings = {
