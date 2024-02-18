@@ -13,6 +13,7 @@ return {
 
         ---@diagnostic disable-next-line: missing-fields
         auto_session.setup({
+            auto_restore_enabled = false,
             -- refresh lualine so the new session name is displayed in the status bar
             post_cwd_changed_hook = lualine.refresh,
             -- Closes dapui before saving the session
