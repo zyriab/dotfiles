@@ -1,13 +1,11 @@
 return {
     "anthony-halim/bible-verse.nvim",
-    lazy = true,
+    lazy = false,
     dependencies = {
         "MunifTanjim/nui.nvim",
     },
     opts = {
-        diatheke = {
-            translation = "KJV",
-        },
+        diatheke = { translation = "KJV" },
     },
     config = true,
 }
