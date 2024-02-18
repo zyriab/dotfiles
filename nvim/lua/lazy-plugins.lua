@@ -12,6 +12,9 @@ lazy.setup({
     -- Support for DBML files
     "zyriab/vim-dbml",
 
+    -- Schema store catalog access
+    "b0o/schemastore.nvim",
+
     { import = "plugins" },
 }, {
     ui = {
