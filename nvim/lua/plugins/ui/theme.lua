@@ -96,6 +96,13 @@ return {
 
                     -- Copilot-cmp
                     CmpItemKindCopilot = { fg = colors1.syntax.string },
+
+                    -- Dashboard
+                    DashboardFooter = { fg = colors1.diag.hint },
+                    DashboardProjectTitle = { fg = colors1.diag.warn },
+                    DashboardProjectTitleIcon = { fg = colors1.fg1 },
+                    DashboardMruTitle = { fg = colors1.diag.info },
+                    DashboardMruIcon = { fg = colors1.fg1 },
                 },
             },
             options = {
