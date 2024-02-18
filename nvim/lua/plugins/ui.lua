@@ -7,4 +7,5 @@ return {
     require("plugins.ui.nvim-pqf"),
     require("plugins.ui.satellite"),
     require("plugins.ui.lualine"),
+    require("plugins.ui.dashboard"),
 }
