@@ -17,7 +17,5 @@ lazy.setup({
 
     { import = "plugins" },
 }, {
-    ui = {
-        border = "rounded",
-    },
+    ui = { border = "rounded" },
 })
