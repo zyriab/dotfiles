@@ -39,6 +39,7 @@ return {
                 path_display = { "shorten" },
                 previewer = false,
                 prompt_title = "Restore Session",
+                initial_mode = "normal",
             })
         end, { desc = "[S]earch [S]essions" })
     end,
