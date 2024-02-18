@@ -8,7 +8,7 @@ return {
         local bv_utils = require("bible-verse.utils")
         local telescope = require("telescope")
         local t_builtin = require("telescope.builtin")
-        local auto_session = require("auto-session")
+        local session_lens = require("auto-session.session-lens")
 
         local function get_footer()
             local verses_result = bible_verse.query({ random = true })
@@ -26,15 +26,13 @@ return {
             return verses_fmt_wrap_table
         end
 
-        local function restore_last_session()
-            local session = auto_session.get_latest_session()
-
-            if session == nil then
-                vim.notify("No session found", vim.log.levels.INFO)
-                return
-            end
-
-            auto_session.RestoreSession(session)
+        local function show_sessions()
+            session_lens.search_session({
+                path_display = { "shorten" },
+                previewer = false,
+                prompt_title = "󰚰 Restore Session",
+                initial_mode = "normal",
+            })
         end
 
         local function nav_to_config()
@@ -77,11 +75,12 @@ return {
                         key = "u",
                     },
                     {
-                        desc = "󰚰 Restore session ",
+                        desc = "󰚰 Sessions ",
                         group = "DiagnosticInfo",
-                        action = restore_last_session,
-                        key = "r",
+                        action = show_sessions,
+                        key = "s",
                     },
+
                     {
                         desc = "󱜙 Projects ",
                         group = "DiagnosticError",
