@@ -19,7 +19,7 @@ return {
         end
 
         -- TODO(outline-ux): check if using `BufWinEnter` could not reduce the checks and variable needs
-        local augroup = vim.api.nvim_create_augroup("custom-options-group", { clear = true })
+        local augroup = vim.api.nvim_create_augroup("outline-custom-options-group", { clear = true })
         vim.api.nvim_create_autocmd("BufEnter", { group = augroup, callback = set_cursor_options })
 
         vim.keymap.set("n", "<leader>o", function()
