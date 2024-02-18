@@ -20,21 +20,30 @@ return {
     },
     config = function()
         local telescope = require("telescope")
+        local builtin = require("telescope.builtin")
+        local t_actions = require("telescope.actions")
+        local t_actions_state = require("telescope.actions.state")
         local load_extensions = require("configs.telescope.load-extensions")
         local live_grep_git_root = require("configs.telescope.live-grep-git-root")
         local set_keymaps = require("configs.telescope.set-keymaps")
 
         local PROJECTS_PATH = "~/Developer"
 
+        ---@param prompt_bufnr integer
+        local function nav_to_and_open_selected_cwd(prompt_bufnr)
+            local entry = t_actions_state.get_selected_entry()
+            t_actions.close(prompt_bufnr)
+
+            vim.cmd.cd(entry.path)
+            builtin.find_files({ cwd = entry.path })
+
+            vim.notify("Changed directory to " .. entry.path)
+        end
+
         -- See `:help telescope` and `:help telescope.setup()`
         telescope.setup({
             defaults = {
                 file_ignore_patterns = { "node_modules", "OUTLINE_*" },
-            },
-            pickers = {
-                find_files = {
-                    hidden = true,
-                },
             },
             extensions = {
                 file_browser = {
@@ -46,22 +55,11 @@ return {
                     initial_mode = "normal",
                     mappings = {
                         ["i"] = {
-                            ["<C-o>"] = function(prompt_bufnr)
-                                local entry = require("telescope.actions.state").get_selected_entry()
-                                require("telescope.actions").close(prompt_bufnr)
-                                vim.cmd.cd(entry.path)
-                                vim.cmd.NvimTreeToggle()
-                                vim.notify("Changed directory to " .. entry.path)
-                            end,
+                            ["<C-o>"] = nav_to_and_open_selected_cwd,
                         },
                         ["n"] = {
-                            ["o"] = function(prompt_bufnr)
-                                local entry = require("telescope.actions.state").get_selected_entry()
-                                require("telescope.actions").close(prompt_bufnr)
-                                vim.cmd.cd(entry.path)
-                                vim.cmd.NvimTreeToggle()
-                                vim.notify("Changed directory to " .. entry.path)
-                            end,
+                            ["o"] = nav_to_and_open_selected_cwd,
+                            ["<C-o>"] = nav_to_and_open_selected_cwd,
                         },
                     },
                 },
@@ -71,9 +69,6 @@ return {
         load_extensions()
 
         vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
-        vim.api.nvim_create_user_command("FileBrowser", function()
-            telescope.extensions.file_browser.file_browser({})
-        end, {})
 
         set_keymaps()
     end,
