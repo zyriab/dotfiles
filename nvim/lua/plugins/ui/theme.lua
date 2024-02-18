@@ -93,6 +93,9 @@ return {
                     DapBreakpointCondition = { fg = colors1.diag.hint },
                     DapBreakpointRejected = { fg = colors1.diag.error },
                     DapLogPoint = { fg = colors1.diag.info },
+
+                    -- Copilot-cmp
+                    CmpItemKindCopilot = { fg = colors1.syntax.string },
                 },
             },
             options = {
