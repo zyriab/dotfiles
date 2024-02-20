@@ -1,12 +1,11 @@
 ---@diagnostic disable: param-type-mismatch
 return {
     "Shatur/neovim-session-manager",
-    dependencies = { "nvim-lua/plenary.nvim", "rcarriga/nvim-dap-ui" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
         local session_manager = require("session_manager")
         local config = require("session_manager.config")
         local filetypes = require("utils.filetypes")
-        local dapui = require("dapui")
 
         session_manager.setup({
             autoload_mode = config.AutoloadMode.Disabled, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
@@ -30,7 +29,7 @@ return {
             group = group,
             callback = function()
                 vim.cmd("cclose")
-                pcall(dapui.close)
+                pcall(vim.cmd, "DapUiClose")
                 pcall(vim.cmd, "NvimTreeClose")
                 pcall(vim.cmd, "OutlineClose")
             end,
@@ -39,5 +38,9 @@ return {
         vim.keymap.set("n", "<leader>ss", function()
             session_manager.load_session(false)
         end, { desc = "[S]earch [S]essions" })
+
+        vim.keymap.set("n", "<leader>sds", function()
+            session_manager.delete_session()
+        end, { desc = "[S]earch and [D]elete [S]essions" })
     end,
 }
