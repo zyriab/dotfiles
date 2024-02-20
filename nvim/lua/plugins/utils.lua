@@ -6,7 +6,7 @@ return {
     require("plugins.utils.undotree"),
     require("plugins.utils.annotations-generators"),
     require("plugins.utils.which-key"),
-    require("plugins.utils.auto-session"),
+    require("plugins.utils.session-manager"),
     -- require("plugins.utils.vim-rooter"),
     require("plugins.utils.qf-helper"),
     require("plugins.utils.goto-breakpoints"),

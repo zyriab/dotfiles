@@ -8,7 +8,7 @@ return {
         local bv_utils = require("bible-verse.utils")
         local telescope = require("telescope")
         local t_builtin = require("telescope.builtin")
-        local session_lens = require("auto-session.session-lens")
+        local session_manager = require("session_manager")
 
         local function get_footer()
             local verses_result = bible_verse.query({ random = true })
@@ -27,12 +27,7 @@ return {
         end
 
         local function show_sessions()
-            session_lens.search_session({
-                path_display = { "shorten" },
-                previewer = false,
-                prompt_title = "󰚰 Restore Session",
-                initial_mode = "normal",
-            })
+            session_manager.load_session(false)
         end
 
         local function nav_to_config()
