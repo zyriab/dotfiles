@@ -4,6 +4,11 @@ return {
         local outline = require("outline")
         local is_focused = false
 
+        local default_opts = {
+            cursorlineopt = vim.opt.cursorlineopt,
+            cursorcolumn = vim.opt.cursorcolumn,
+        }
+
         local function set_cursor_options()
             local filetype = vim.bo.filetype
             local outline_ft = require("utils.filetypes").outline
@@ -14,8 +19,8 @@ return {
                 return
             end
 
-            vim.opt.cursorlineopt = "number"
-            vim.opt.cursorcolumn = true
+            vim.opt.cursorlineopt = default_opts.cursorlineopt
+            vim.opt.cursorcolumn = default_opts.cursorcolumn
         end
 
         -- TODO(outline-ux): check if using `BufWinEnter` could not reduce the checks and variable needs
