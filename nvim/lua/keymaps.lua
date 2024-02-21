@@ -19,18 +19,63 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Paste over selection without losing buffer contents
-vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "[P]aste over selection w/o losing buffer" })
-
 -- Yank into OS clipboard
 vim.keymap.set("n", "<leader>y", "\"+y", { desc = "[Y]ank selection into OS clipboard" })
 vim.keymap.set("v", "<leader>y", "\"+y", { desc = "[Y]ank selection into OS clipboard" })
 vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "[Y]ank line into OS clipboard" })
 vim.keymap.set("n", "<leader>yy", "\"+yy", { desc = "[YY]ank line into OS clipboard" })
 
+-- Paste over selection without losing buffer contents
+vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "[P]aste over selection w/o losing buffer" })
+
 -- Delete without losing buffer content
 vim.keymap.set("n", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" })
 vim.keymap.set("v", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" })
+
+-- Terminal
+vim.api.nvim_create_user_command("TermToggle", function()
+    local is_open = vim.g.term_win_id ~= nil and vim.api.nvim_win_is_valid(vim.g.term_win_id)
+
+    if is_open then
+        vim.api.nvim_win_hide(vim.g.term_win_id)
+        vim.g.term_win_id = nil
+        return
+    end
+
+    -- Open new window 25 lines tall at the bottom of the screen
+    vim.cmd("botright 25 new")
+    vim.g.term_win_id = vim.api.nvim_get_current_win()
+
+    local has_term_buf = vim.g.term_buf_id ~= nil and vim.api.nvim_buf_is_valid(vim.g.term_buf_id)
+
+    if has_term_buf then
+        vim.api.nvim_win_set_buf(vim.g.term_win_id, vim.g.term_buf_id)
+    else
+        vim.cmd("terminal")
+        vim.g.term_buf_id = vim.api.nvim_get_current_buf()
+    end
+
+    vim.cmd("startinsert")
+end, {})
+
+-- For session manager usage
+vim.api.nvim_create_user_command("TermClose", function()
+    if vim.g.term_win_id ~= nil then
+        vim.api.nvim_win_close(vim.g.term_win_id, true)
+        vim.g.term_win_id = nil
+    end
+    if vim.g.term_buf_id ~= nil then
+        vim.api.nvim_buf_delete(vim.g.term_buf_id, { force = true })
+        vim.g.term_buf_id = nil
+    end
+end, {})
+
+vim.keymap.set("n", "<leader>tt", function()
+    vim.cmd("TermToggle")
+end, { desc = "[T]oggle [T]erminal" })
+vim.keymap.set("t", "<leader>tt", function()
+    vim.cmd("TermToggle")
+end, { desc = "[T]oggle [T]erminal" })
 
 -- Automagically calls `/%s` with currently hovered word pre-entered
 -- vim.keymap.set(
