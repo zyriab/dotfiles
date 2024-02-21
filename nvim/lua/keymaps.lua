@@ -42,9 +42,11 @@ vim.keymap.set("v", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" }
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+local group = vim.api.nvim_create_augroup("custom-yank-highlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = vim.highlight.on_yank,
-    group = highlight_group,
+    group = group,
     pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+    end,
 })
