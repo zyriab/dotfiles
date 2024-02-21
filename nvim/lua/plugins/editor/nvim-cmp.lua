@@ -84,11 +84,30 @@ return {
                 ["<S-Tab>"] = nil,
             }),
             sources = {
-                { name = "copilot" },
                 { name = "nvim_lsp" },
+                { name = "vim-dadbod-completion" },
+                { name = "copilot" },
                 { name = "luasnip" },
                 { name = "path" },
-                { name = "vim-dadbod-completion" },
+            },
+            sorting = {
+                priority_weight = 2,
+                comparators = {
+                    -- Making sure that poor Copilot suggestions are not prioritized
+                    cmp.config.compare.exact,
+                    require("copilot_cmp.comparators").prioritize,
+
+                    -- Below is the default comparitor list and order for nvim-cmp except for `exact`
+                    cmp.config.compare.offset,
+                    -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+                    cmp.config.compare.score,
+                    cmp.config.compare.recently_used,
+                    cmp.config.compare.locality,
+                    cmp.config.compare.kind,
+                    cmp.config.compare.sort_text,
+                    cmp.config.compare.length,
+                    cmp.config.compare.order,
+                },
             },
         })
     end,
