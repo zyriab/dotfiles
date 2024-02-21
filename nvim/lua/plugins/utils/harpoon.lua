@@ -15,9 +15,9 @@ return {
         vim.keymap.set("n", "<leader>a", function()
             harpoon:list():append()
         end, { desc = "Harpoon [A]ppend file" })
-        vim.keymap.set("n", "<C-c>", function()
+        vim.keymap.set("n", "<leader>h", function()
             harpoon.ui:toggle_quick_menu(harpoon:list())
-        end, { desc = "[c-C] Harpoon view list" })
+        end, { desc = "[H]arpoon view list" })
 
         -- Uses Colemak-DHm home row
         vim.keymap.set("n", "<C-t>", function()
