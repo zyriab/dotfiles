@@ -14,10 +14,10 @@ vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 
 -- Highlight number only (font color change)
-vim.opt.cursorlineopt = "number"
+vim.opt.cursorlineopt = "screenline,number"
 
 -- Highlight the cursor's column (vertical)
-vim.opt.cursorcolumn = true
+vim.opt.cursorcolumn = false
 
 -- Highlight the 80th column
 vim.opt.colorcolumn = "80"
