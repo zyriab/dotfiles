@@ -1,7 +1,8 @@
 local lazy = require("lazy")
 lazy.setup({
     -- Detect tabstop and shiftwidth automatically
-    "tpope/vim-sleuth",
+    -- FIXME: breaks with some filetypes (C)
+    -- "tpope/vim-sleuth",
 
     -- Nicer vim.ui interfaces
     "stevearc/dressing.nvim",
