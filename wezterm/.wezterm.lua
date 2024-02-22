@@ -37,19 +37,29 @@ config.mouse_wheel_scrolls_tabs = false
 config.show_new_tab_button_in_tab_bar = false
 
 -- Keymaps
+
 config.leader = { key = " ", mods = "ALT" }
 config.keys = {
-	{ key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
 	{ key = "n", mods = "SHIFT|CTRL", action = act.ToggleFullScreen },
+
+	-- Panes
+	{ key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
 	{ key = "v", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "s", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	-- move between panes
+
+	-- Move between panes
 	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
 	{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
 	{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
 	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
 	{ key = "b", mods = "SHIFT|CTRL", action = act.MoveTabRelative(-1) },
 	{ key = "f", mods = "SHIFT|CTRL", action = act.MoveTabRelative(1) },
-}
 
+	-- Deactivating conflicting keymaps for Neovim
+	{ key = "-", mods = "CTRL", action = act.DisableDefaultAssignment },
+	{ key = "+", mods = "CTRL", action = act.DisableDefaultAssignment },
+	{ key = "+", mods = "SHIFT|CTRL", action = act.DisableDefaultAssignment },
+	{ key = "=", mods = "CTRL", action = act.DisableDefaultAssignment },
+	{ key = "_", mods = "CTRL", action = act.DisableDefaultAssignment },
+}
 return config
