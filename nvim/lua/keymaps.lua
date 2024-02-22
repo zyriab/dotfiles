@@ -51,11 +51,11 @@ vim.api.nvim_create_user_command("TermToggle", function()
     if has_term_buf then
         vim.api.nvim_win_set_buf(vim.g.term_win_id, vim.g.term_buf_id)
     else
-        vim.cmd("terminal")
+        vim.cmd.term()
         vim.g.term_buf_id = vim.api.nvim_get_current_buf()
     end
 
-    vim.cmd("startinsert")
+    vim.cmd.startinsert()
 end, {})
 
 -- For session manager usage
@@ -70,12 +70,8 @@ vim.api.nvim_create_user_command("TermClose", function()
     end
 end, {})
 
-vim.keymap.set("n", "<leader>tt", function()
-    vim.cmd("TermToggle")
-end, { desc = "[T]oggle [T]erminal" })
-vim.keymap.set("t", "<leader>tt", function()
-    vim.cmd("TermToggle")
-end, { desc = "[T]oggle [T]erminal" })
+vim.keymap.set("n", "<C-t>", vim.cmd.TermToggle, { desc = "Toggle [^][T]erminal", silent = true })
+vim.keymap.set("t", "<C-t>", vim.cmd.TermToggle, { desc = "Toggle [^][T]erminal", silent = true })
 
 -- Automagically calls `/%s` with currently hovered word pre-entered
 -- vim.keymap.set(
