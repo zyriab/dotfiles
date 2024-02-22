@@ -32,7 +32,7 @@ return {
                 pcall(vim.cmd.DapUiClose)
                 pcall(vim.cmd.NvimTreeClose)
                 pcall(vim.cmd.OutlineClose)
-                pcall(vim.cmd.TermClose)
+                pcall(vim.cmd.TermKill)
             end,
         })
 
