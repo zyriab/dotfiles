@@ -28,11 +28,11 @@ return {
             pattern = "SessionSavePre",
             group = group,
             callback = function()
-                vim.cmd("cclose")
-                pcall(vim.cmd, "DapUiClose")
-                pcall(vim.cmd, "NvimTreeClose")
-                pcall(vim.cmd, "OutlineClose")
-                pcall(vim.cmd, "TermClose")
+                vim.cmd.cclose()
+                pcall(vim.cmd.DapUiClose)
+                pcall(vim.cmd.NvimTreeClose)
+                pcall(vim.cmd.OutlineClose)
+                pcall(vim.cmd.TermClose)
             end,
         })
 

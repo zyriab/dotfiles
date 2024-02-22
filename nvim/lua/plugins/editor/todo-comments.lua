@@ -8,7 +8,7 @@ return {
         vim.keymap.set("n", "[t", todo_comments.jump_prev, { desc = "Previous [[] [T]odo comment" })
 
         vim.keymap.set("n", "<leader>td", function()
-            vim.cmd("TodoQuickFix")
+            vim.cmd.TodoQuickFix()
         end, { desc = "Show [T]o[D]o comments in quickfix" })
 
         -- FIXME: need to debug the RegEx

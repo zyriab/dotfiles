@@ -8,7 +8,7 @@ return {
 
         vim.keymap.set("n", "<leader><leader>", function()
             notify.dismiss({ silent = true, pending = true })
-            vim.cmd("noh")
+            vim.cmd.noh()
         end, { desc = "Clear notifications and search highlights" })
 
         -- Just the default config except for the 3 first properties

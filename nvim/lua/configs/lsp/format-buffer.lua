@@ -15,7 +15,7 @@ return function()
     if filetype == filetypes.go then
         -- gofumpt + goimports + golines
         ---@diagnostic disable-next-line: param-type-mismatch
-        local ok, _ = pcall(vim.cmd, "GoFmt")
+        local ok, _ = pcall(vim.cmd.GoFmt)
 
         if ok then
             return
@@ -35,7 +35,7 @@ return function()
     -- [[ JS/TS ]]
     if vim.tbl_get(tsserver_types, filetype) then
         if vim.fn.executable("prettierd") == 1 then
-            vim.cmd("%!prettierd %")
+            vim.cmd([[ %!prettierd % ]])
             return
         end
     end

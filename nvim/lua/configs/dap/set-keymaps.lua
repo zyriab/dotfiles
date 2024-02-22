@@ -13,7 +13,7 @@ return function()
         end
 
         -- Launching a new session using `go.nvim` DAP config
-        vim.cmd("GoDebug")
+        vim.cmd.GoDebug()
     end, { desc = "Debug: Start/Continue" })
 
     vim.keymap.set("n", "<leader><F5>", dap.terminate, { desc = "Debug: Teminate session" })

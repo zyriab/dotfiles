@@ -16,8 +16,10 @@ return {
             },
         })
 
+        -- TODO: add loclist w/ `<leader>ll`
+
         vim.keymap.set("n", "<leader>qf", function()
-            vim.cmd("QFToggle!")
+            vim.cmd.QFToggle({ bang = true })
         end, { desc = "Toggle [Q]uick[F]ix", silent = true })
     end,
 }

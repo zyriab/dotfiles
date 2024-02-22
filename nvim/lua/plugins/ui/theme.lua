@@ -116,6 +116,6 @@ return {
         -- The tabs do not display well if transparent
         -- transparent.clear_prefix("Mason")
 
-        vim.cmd("colorscheme github_dark_colorblind")
+        vim.cmd.colorscheme("github_dark_colorblind")
     end,
 }
