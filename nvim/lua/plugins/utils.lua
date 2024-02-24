@@ -4,7 +4,7 @@ return {
     require("plugins.utils.nvim-tree"),
     require("plugins.utils.telescope"),
     require("plugins.utils.undotree"),
-    require("plugins.utils.annotations-generators"),
+    require("plugins.utils.neogen"),
     require("plugins.utils.which-key"),
     require("plugins.utils.session-manager"),
     -- require("plugins.utils.vim-rooter"),
