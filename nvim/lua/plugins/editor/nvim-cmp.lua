@@ -30,6 +30,7 @@ return {
     config = function()
         -- See `:help cmp`
         local cmp = require("cmp")
+        local neogen = require("neogen")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
         local setup_luasnip = require("configs.cmp.setup-luasnip")
@@ -37,6 +38,25 @@ return {
         setup_luasnip()
 
         local select_opts = { behavior = cmp.SelectBehavior.Select }
+
+        local function jump_next()
+            neogen.jump_next()
+
+            if luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            end
+        end
+
+        local function jump_prev()
+            neogen.jump_prev()
+
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            end
+        end
+
+        vim.keymap.set({ "n", "i", "v" }, "<C-l>", jump_next, { desc = "Jump to next placeholder" })
+        vim.keymap.set({ "n", "i", "v" }, "<C-h>", jump_prev, { desc = "Jump to previous placeholder" })
 
         cmp.setup({
             formatting = {

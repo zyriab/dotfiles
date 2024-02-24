@@ -11,15 +11,8 @@ return {
                 snippet_engine = "luasnip",
             })
 
+            -- NOTE: Placeholder jumping is set in nvim-cmp config file
             vim.keymap.set("n", "<leader>doc", neogen.generate, { desc = "Generate type [DOC]umentation" })
-
-            vim.keymap.set({ "n", "i", "v" }, "<C-l>", neogen.jump_next, { desc = "Type doc: Jump to next annotation" })
-            vim.keymap.set(
-                { "n", "i", "v" },
-                "<C-h>",
-                neogen.jump_prev,
-                { desc = "Type doc: Jump to previous annotation" }
-            )
         end,
     },
 }
