@@ -38,7 +38,7 @@ vim.keymap.set("v", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" }
 vim.api.nvim_create_user_command("TermToggle", term_utils.toggle_terminal, {})
 vim.api.nvim_create_user_command("TermKill", term_utils.kill_terminal, {})
 
-vim.keymap.set("n", "<leader>t", vim.cmd.TermToggle, { desc = "Toggle [T]erminal", silent = true })
+vim.keymap.set("n", "<leader>tt", vim.cmd.TermToggle, { desc = "Toggle [T]erminal", silent = true })
 vim.keymap.set("t", "<C-t>", vim.cmd.TermToggle, { desc = "Toggle [^][T]erminal", silent = true })
 
 -- Automagically calls `/%s` with currently hovered word pre-entered
