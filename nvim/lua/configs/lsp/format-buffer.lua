@@ -13,11 +13,19 @@ return function()
 
     -- [[ Go ]]
     if filetype == filetypes.go then
-        -- gofumpt + goimports + golines
-        ---@diagnostic disable-next-line: param-type-mismatch
-        local ok, _ = pcall(vim.cmd.GoFmt)
+        -- It seems that `:GoFmt` does not always run goimport
+        local ok, _ = pcall(vim.cmd.GoImport)
 
-        if ok then
+        if not ok then
+            vim.notify("Running of :GoImport failed", vim.log.levels.ERROR)
+        end
+
+        -- gofumpt + goimports + golines
+        ok, _ = pcall(vim.cmd.GoFmt)
+
+        if not ok then
+            vim.notify("Running of :GoFmt failed, using LSP formatter", vim.log.levels.ERROR)
+        else
             return
         end
     end
@@ -30,6 +38,8 @@ return function()
             stylua.format_file()
             return
         end
+
+        vim.notify("Stylua is not installed, using LSP formatter", vim.log.levels.WARN)
     end
 
     -- [[ JS/TS ]]
@@ -38,6 +48,8 @@ return function()
             vim.cmd([[ %!prettierd % ]])
             return
         end
+
+        vim.notify("Prettierd is not installed, using LSP formatter", vim.log.levels.WARN)
     end
 
     -- [[ Fallback ]]
