@@ -29,7 +29,7 @@ return {
             lsp_cfg = true, -- true: use non-default gopls setup specified in go/lsp.lua
             lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
             lsp_keymaps = false, -- set to false to disable gopls/lsp keymap
-            lsp_codelens = true, -- set to false to disable codelens, true by default, you can use a function
+            lsp_codelens = false, -- set to false to disable codelens, true by default, you can use a function
             diagnostic = false,
             lsp_document_formatting = true,
             lsp_inlay_hints = { enable = false },
