@@ -8,8 +8,8 @@ Current Neovim config, rewritten early February 2024
 - Go (through go.nvim) -- to be rewritten from scratch as I settle on what I do and don't need
 
 **TODO**
-- [ ] Add `go.nvim` commands keymaps
-- [ ] Add final touch (Copilot, Dashboard w/ verse) and stop tweaking this all day :D
+- [x] Add `go.nvim` commands keymaps
+- [x] Add final touch (Copilot, Dashboard w/ verse) and stop tweaking this all day :D
 - [ ] Add theme transparency toggle
 - [ ] Streamline DevX (refactoring, running fns, remove bloat, etc)
 - [ ] Implement nice snippets
