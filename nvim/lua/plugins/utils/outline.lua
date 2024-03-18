@@ -126,12 +126,12 @@ return {
                 -- 'auto_close' option above.
                 goto_location = "<Cr>",
                 -- Jump to symbol under cursor but keep focus on outline window.
-                peek_location = "o",
+                peek_location = "p",
                 -- Visit location in code and close outline immediately
                 goto_and_close = "<S-Cr>",
                 -- Change cursor position of outline window to match current location in code.
                 -- 'Opposite' of goto/peek_location.
-                restore_location = "<C-g>",
+                restore_location = "g",
                 -- Open LSP/provider-dependent symbol hover information
                 hover_symbol = "<C-space>",
                 -- Preview location code of the symbol under cursor
@@ -146,8 +146,8 @@ return {
                 fold_all = "C",
                 unfold_all = "O",
                 fold_reset = "R",
-                down_and_jump = "<C-j>",
-                up_and_jump = "<C-k>",
+                down_and_jump = "<C-n>",
+                up_and_jump = "<C-e>",
             },
 
             providers = {
