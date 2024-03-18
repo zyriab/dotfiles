@@ -55,8 +55,8 @@ return {
             end
         end
 
-        vim.keymap.set({ "n", "i", "v" }, "<C-l>", jump_next, { desc = "Jump to next placeholder" })
-        vim.keymap.set({ "n", "i", "v" }, "<C-h>", jump_prev, { desc = "Jump to previous placeholder" })
+        vim.keymap.set({ "n", "i", "v" }, "<C-i>", jump_next, { desc = "Jump to next placeholder" })
+        vim.keymap.set({ "n", "i", "v" }, "<C-m>", jump_prev, { desc = "Jump to previous placeholder" })
 
         cmp.setup({
             formatting = {
