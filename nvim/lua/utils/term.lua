@@ -1,5 +1,7 @@
 local M = {}
 
+local TERMINAL_HEIGHT = 15
+
 M.toggle_terminal = function()
     local is_open = vim.g.term_win_id ~= nil and vim.api.nvim_win_is_valid(vim.g.term_win_id)
 
@@ -9,8 +11,8 @@ M.toggle_terminal = function()
         return
     end
 
-    -- Open new window 25 lines tall at the bottom of the screen
-    vim.cmd("botright 25 new")
+    -- Open new window TERMINAL_HEIGHT lines tall at the bottom of the screen
+    vim.cmd(string.format("botright %d new", TERMINAL_HEIGHT))
     vim.g.term_win_id = vim.api.nvim_get_current_win()
 
     local has_term_buf = vim.g.term_buf_id ~= nil and vim.api.nvim_buf_is_valid(vim.g.term_buf_id)
