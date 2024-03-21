@@ -55,9 +55,10 @@ return {
             end
         end
 
+        -- Keeping the `J` and `K` positions but on Colemak
         -- HACK: <C-i> and <Tab> are the same key system-wide, so we need to remap <Tab> to itself
         vim.keymap.set({ "n", "i", "v" }, "<Tab>", "<Tab>")
-        vim.keymap.set({ "n", "i", "v" }, "<C-i>", jump_next, { desc = "Jump to next placeholder" })
+        vim.keymap.set({ "n", "i", "v" }, "<C-e>", jump_next, { desc = "Jump to next placeholder" })
         vim.keymap.set({ "n", "i", "v" }, "<C-m>", jump_prev, { desc = "Jump to previous placeholder" })
 
         cmp.setup({
