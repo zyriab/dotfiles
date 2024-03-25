@@ -102,7 +102,7 @@ return function()
     })
 
     -- Making sure `.h` files are declared as C files and not C++
-    vim.cmd([[let g:c_syntax_for_h = 1]])
+    vim.cmd("let g:c_syntax_for_h = 1")
 
     mason_lspconfig.setup_handlers({
         function(server_name)
