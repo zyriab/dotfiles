@@ -25,6 +25,7 @@ local servers = {
     terraformls = {},
     eslint = {},
     taplo = {},
+    dockerls = {},
 
     jsonls = {
         settings = {
