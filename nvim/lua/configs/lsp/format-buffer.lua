@@ -13,45 +13,47 @@ return function()
 
     -- [[ Go ]]
     if filetype == filetypes.go then
-        -- It seems that `:GoFmt` does not always run goimport
-        local ok, _ = pcall(vim.cmd.GoImport)
-
+        local ok, gofmt = pcall(require, "go.format")
         if not ok then
-            vim.notify("Running of :GoImport failed", vim.log.levels.ERROR)
+            vim.notify("Could not import go.format, using LSP formatter", vim.log.levels.ERROR)
+            goto FALLBACK
         end
 
-        -- gofumpt + goimports + golines
-        ok, _ = pcall(vim.cmd.GoFmt)
+        ok, _ = pcall(gofmt.goimports)
 
         if not ok then
-            vim.notify("Running of :GoFmt failed, using LSP formatter", vim.log.levels.ERROR)
-        else
-            return
+            vim.notify("Running of goimports failed, using LSP formatter", vim.log.levels.ERROR)
+            goto FALLBACK
         end
+
+        return
     end
 
     -- [[ Lua ]]
     if filetype == filetypes.lua then
         local ok, stylua = pcall(require, "stylua-nvim")
 
-        if ok then
-            stylua.format_file()
-            return
+        if not ok then
+            vim.notify("Stylua is not installed, using LSP formatter", vim.log.levels.WARN)
+            goto FALLBACK
         end
 
-        vim.notify("Stylua is not installed, using LSP formatter", vim.log.levels.WARN)
+        stylua.format_file()
+        return
     end
 
     -- [[ JS/TS ]]
     if vim.tbl_get(tsserver_types, filetype) then
-        if vim.fn.executable("prettierd") == 1 then
-            vim.cmd([[ %!prettierd % ]])
-            return
+        if vim.fn.executable("prettierd") ~= 1 then
+            vim.notify("Prettierd is not installed, using LSP formatter", vim.log.levels.WARN)
+            goto FALLBACK
         end
 
-        vim.notify("Prettierd is not installed, using LSP formatter", vim.log.levels.WARN)
+        vim.cmd([[ %!prettierd % ]])
+        return
     end
 
     -- [[ Fallback ]]
+    ::FALLBACK::
     vim.lsp.buf.format()
 end
