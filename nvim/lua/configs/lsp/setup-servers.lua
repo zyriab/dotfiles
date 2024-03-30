@@ -15,7 +15,7 @@ local on_attach = require("configs.lsp.on-attach")
 local servers = {
     clangd = {},
     sqlls = {},
-    html = { filetypes = { "html" } },
+    html = { filetypes = { "html", "webc" } },
     cssls = {},
     arduino_language_server = {},
     graphql = {},

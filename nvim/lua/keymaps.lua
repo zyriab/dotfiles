@@ -2,9 +2,10 @@ local term_utils = require("utils.term")
 
 -- [[ Basic Keymaps ]]
 
+-- TODO: Add a function to toggle this when using regular keyboard
 -- Heavenly switcharoo (happy hands)
-vim.keymap.set("n", "0", "^", { noremap = true })
-vim.keymap.set("n", "^", "0", { noremap = true })
+-- vim.keymap.set("n", "0", "^", { noremap = true })
+-- vim.keymap.set("n", "^", "0", { noremap = true })
 
 -- Move on wordwrap like any other line
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
