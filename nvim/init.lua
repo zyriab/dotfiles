@@ -15,5 +15,5 @@ require("lazy-plugins")
 -- [[ Basic Keymaps ]]
 require("keymaps")
 
--- [[ Quickfix keymaps ]]
-require("quickfix")
+-- [[ QuickFix keymaps ]]
+-- require("quickfix")
