@@ -21,7 +21,7 @@ local servers = {
     graphql = {},
     bashls = {},
     marksman = {},
-    tailwindcss = {},
+    tailwindcss = { filetypes = { "html", "webc" } },
     terraformls = {},
     eslint = {},
     taplo = {},
