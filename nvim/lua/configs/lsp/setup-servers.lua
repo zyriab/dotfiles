@@ -5,6 +5,7 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local lspconfig = require("lspconfig")
 local schemastore = require("schemastore")
 local on_attach = require("configs.lsp.on-attach")
+local filetypes = require("utils.filetypes")
 
 -- Enable the following language servers
 --  Add any additional override configuration in the following tables. They will be passed to
@@ -15,13 +16,13 @@ local on_attach = require("configs.lsp.on-attach")
 local servers = {
     clangd = {},
     sqlls = {},
-    html = { filetypes = { "html", "webc" } },
+    html = { filetypes = { filetypes.html, filetypes.webc } },
     cssls = {},
     arduino_language_server = {},
     graphql = {},
     bashls = {},
     marksman = {},
-    tailwindcss = { filetypes = { "html", "webc" } },
+    tailwindcss = { filetypes = { filetypes.html, filetypes.webc } },
     terraformls = {},
     eslint = {},
     taplo = {},

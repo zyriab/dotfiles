@@ -18,4 +18,6 @@ return {
     typescript = "typescript",
     jsx = "javascriptreact",
     tsx = "typescriptreact",
+    html = "html",
+    webc = "webc",
 }
