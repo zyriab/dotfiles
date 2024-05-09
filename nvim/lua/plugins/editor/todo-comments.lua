@@ -7,7 +7,7 @@ return {
         vim.keymap.set("n", "]t", todo_comments.jump_next, { desc = "Next []] [T]odo comment" })
         vim.keymap.set("n", "[t", todo_comments.jump_prev, { desc = "Previous [[] [T]odo comment" })
 
-        vim.keymap.set("n", "<leader>td", vim.cmd.TodoQuickFix, { desc = "Show [T]o[D]o comments in quickfix" })
+        vim.keymap.set("n", "<leader>td", vim.cmd.TodoTelescope, { desc = "Show [T]o[D]o comments in Telescope" })
 
         -- FIXME: need to debug the RegEx
         todo_comments.setup({
