@@ -43,13 +43,13 @@ return function()
     end
 
     -- [[ JS/TS ]]
-    if vim.tbl_get(tsserver_types, filetype) then
+    if vim.tbl_contains(tsserver_types, filetype) then
         if vim.fn.executable("prettierd") ~= 1 then
             vim.notify("Prettierd is not installed, using LSP formatter", vim.log.levels.WARN)
             goto FALLBACK
         end
 
-        vim.cmd([[ %!prettierd % ]])
+        vim.cmd("%!prettierd %")
         return
     end
 
