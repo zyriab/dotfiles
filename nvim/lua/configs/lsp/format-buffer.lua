@@ -1,5 +1,11 @@
 local filetypes = require("utils.filetypes")
 
+local clang_types = {
+    filetypes.c,
+    filetypes.cpp,
+    filetypes.arduino,
+}
+
 local prettier_types = {
     filetypes.javascript,
     filetypes.typescript,
@@ -12,6 +18,17 @@ local prettier_types = {
 --- Format current buffer based on filetype. Fallbacks to nvim-lsp formatter.
 return function()
     local filetype = vim.bo.filetype
+
+    -- [[ C/C++/Arduino ]]
+    if vim.tbl_contains(clang_types, filetype) then
+        if vim.fn.executable("clang-format") ~= 1 then
+            vim.notify("clang-format is not installed, using LSP formatter", vim.log.levels.ERROR)
+            goto FALLBACK
+        end
+
+        vim.cmd("%!clang-format")
+        return
+    end
 
     -- [[ Go ]]
     if filetype == filetypes.go then
@@ -36,7 +53,7 @@ return function()
         local ok, stylua = pcall(require, "stylua-nvim")
 
         if not ok then
-            vim.notify("Stylua is not installed, using LSP formatter", vim.log.levels.WARN)
+            vim.notify("Stylua is not installed, using LSP formatter", vim.log.levels.ERROR)
             goto FALLBACK
         end
 
@@ -47,7 +64,7 @@ return function()
     -- [[ JS/TS/Json/CSS ]]
     if vim.tbl_contains(prettier_types, filetype) then
         if vim.fn.executable("prettierd") ~= 1 then
-            vim.notify("Prettierd is not installed, using LSP formatter", vim.log.levels.WARN)
+            vim.notify("Prettierd is not installed, using LSP formatter", vim.log.levels.ERROR)
             goto FALLBACK
         end
 
