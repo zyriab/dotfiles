@@ -24,6 +24,15 @@ return {
             end,
         })
 
+        -- Arduino
+        vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
+            group = group,
+            pattern = { "*.ino" },
+            callback = function()
+                vim.api.nvim_set_option_value("commentstring", "/*%s*/", { buf = 0 })
+            end,
+        })
+
         vim.keymap.set("n", "<C-/>", vim.cmd.CommentToggle, { silent = true })
 
         -- TODO: find a way to stay in visual mode
