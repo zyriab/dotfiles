@@ -121,7 +121,7 @@ return function()
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = servers[server_name],
-                cmd = servers[server_name]["cmd"] or nil,
+                cmd = (servers[server_name] or {}).cmd,
                 filetypes = (servers[server_name] or {}).filetypes,
                 single_file_support = true,
             })
