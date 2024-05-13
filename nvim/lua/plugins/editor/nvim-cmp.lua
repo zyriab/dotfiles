@@ -107,6 +107,7 @@ return {
                 ["<S-Tab>"] = nil,
             }),
             sources = {
+                { name = "otter" }, -- For embedded languages
                 { name = "nvim_lsp" },
                 { name = "vim-dadbod-completion" },
                 { name = "copilot" },
