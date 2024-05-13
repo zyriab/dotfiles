@@ -18,7 +18,6 @@ local servers = {
     sqlls = {},
     html = { filetypes = { filetypes.html, filetypes.webc } },
     cssls = {},
-    arduino_language_server = {},
     graphql = {},
     bashls = {},
     marksman = {},
@@ -27,6 +26,16 @@ local servers = {
     eslint = {},
     taplo = {},
     dockerls = {},
+
+    arduino_language_server = {
+        cmd = {
+            "arduino-language-server",
+            "-cli-config",
+            "$HOME/Library/Arduino15/arduino-cli.yaml",
+            "-fqbn",
+            "arduino:avr:uno",
+        },
+    },
 
     jsonls = {
         settings = {
@@ -112,6 +121,7 @@ return function()
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = servers[server_name],
+                cmd = servers[server_name]["cmd"] or nil,
                 filetypes = (servers[server_name] or {}).filetypes,
                 single_file_support = true,
             })
