@@ -11,6 +11,7 @@ alias gcl="git config --edit --local"
 
 ### Prog
 alias got="go test ./..."
+alias qc="qmk compile -e CONVERT_TO=promicro_rp2040 -km colemak-v1"
 
 ### Navigation
 alias dev="cd $DEV_PATH"

@@ -43,7 +43,7 @@ return {
         -- See `:help telescope` and `:help telescope.setup()`
         telescope.setup({
             defaults = {
-                file_ignore_patterns = { "node_modules", "OUTLINE_*" },
+                file_ignore_patterns = { "node_modules", "OUTLINE_*", "*.otter.*" },
             },
             extensions = {
                 file_browser = {

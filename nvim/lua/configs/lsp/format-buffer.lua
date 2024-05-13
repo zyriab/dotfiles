@@ -1,10 +1,12 @@
 local filetypes = require("utils.filetypes")
 
-local tsserver_types = {
+local prettier_types = {
     filetypes.javascript,
     filetypes.typescript,
     filetypes.jsx,
     filetypes.tsx,
+    filetypes.json,
+    filetypes.css,
 }
 
 --- Format current buffer based on filetype. Fallbacks to nvim-lsp formatter.
@@ -42,14 +44,14 @@ return function()
         return
     end
 
-    -- [[ JS/TS ]]
-    if vim.tbl_get(tsserver_types, filetype) then
+    -- [[ JS/TS/Json/CSS ]]
+    if vim.tbl_contains(prettier_types, filetype) then
         if vim.fn.executable("prettierd") ~= 1 then
             vim.notify("Prettierd is not installed, using LSP formatter", vim.log.levels.WARN)
             goto FALLBACK
         end
 
-        vim.cmd([[ %!prettierd % ]])
+        vim.cmd("%!prettierd %")
         return
     end
 
