@@ -1,4 +1,5 @@
 local filetypes = require("utils.filetypes")
+local ux = require("utils.ux")
 
 local clang_types = {
     filetypes.c,
@@ -68,7 +69,9 @@ return function()
             goto FALLBACK
         end
 
-        vim.cmd("%!prettierd %")
+        ux.call_with_preserved_cursor(function()
+            vim.cmd("%!prettierd %")
+        end)
         return
     end
 
