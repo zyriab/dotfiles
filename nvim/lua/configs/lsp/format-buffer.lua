@@ -75,6 +75,17 @@ return function()
         return
     end
 
+    -- [[ templ ]]
+    if filetype == filetypes.templ then
+        if vim.fn.executable("templ fmt") ~= 1 then
+            vim.notify("templfmt is not installed, using LSP formatter", vim.log.levels.ERROR)
+            goto FALLBACK
+        end
+
+        vim.cmd("%!templ fmt")
+        return
+    end
+
     -- [[ Fallback ]]
     ::FALLBACK::
     vim.lsp.buf.format()
