@@ -14,20 +14,17 @@ local filetypes = require("utils.filetypes")
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-    clangd = {},
-    sqlls = {},
-    html = { filetypes = { filetypes.html, filetypes.webc, filetypes.templ, filetypes.htmx } },
-    htmx = { filetypes = { filetypes.htmx, filetypes.html, filetypes.webc, filetypes.templ } },
-    templ = {},
-    cssls = {},
-    graphql = {},
     bashls = {},
-    marksman = {},
-    tailwindcss = { filetypes = { filetypes.html, filetypes.webc, filetypes.htmx, filetypes.templ } },
-    terraformls = {},
-    eslint = {},
-    taplo = {},
+    clangd = {},
+    cssls = {},
     dockerls = {},
+    eslint = {},
+    graphql = {},
+    marksman = {},
+    sqlls = {},
+    taplo = {},
+    templ = {},
+    terraformls = {},
 
     arduino_language_server = {
         cmd = {
@@ -39,31 +36,7 @@ local servers = {
         },
     },
 
-    jsonls = {
-        settings = {
-            json = {
-                schemas = schemastore.json.schemas(),
-                validate = { enable = true },
-            },
-        },
-    },
-
-    yamlls = {
-        settings = {
-            yaml = {
-                schemaStore = {
-                    -- You must disable built-in schemaStore support if you want to use
-                    -- this plugin and its advanced options like `ignore`.
-                    enable = false,
-                    -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-                    url = "",
-                },
-                schemas = schemastore.yaml.schemas(),
-            },
-        },
-    },
-
-    -- NOTE(Go): Replaced by Go.nvim until I settle on what I want in my env
+    -- NOTE: Replaced by Go.nvim until I settle on what I want in my env
     ---@url https://github.com/golang/tools/tree/master/gopls/doc
     -- gopls = {
     --     cmd = { "gopls", "--remote=auto" },
@@ -80,9 +53,32 @@ local servers = {
     --     },
     -- },
 
-    tsserver = {
-        implicitProjectConfiguration = {
-            checkJs = true,
+    html = {
+        filetypes = {
+            filetypes.html,
+            filetypes.htmx,
+            filetypes.liquid,
+            filetypes.markdown,
+            filetypes.templ,
+            filetypes.webc,
+        },
+    },
+
+    htmx = {
+        filetypes = {
+            filetypes.html,
+            filetypes.htmx,
+            filetypes.templ,
+            filetypes.webc,
+        },
+    },
+
+    jsonls = {
+        settings = {
+            json = {
+                schemas = schemastore.json.schemas(),
+                validate = { enable = true },
+            },
         },
     },
 
@@ -92,6 +88,38 @@ local servers = {
             telemetry = { enable = false },
             -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
             -- diagnostics = { disable = { 'missing-fields' } },
+        },
+    },
+
+    tailwindcss = {
+        filetypes = {
+            filetypes.html,
+            filetypes.htmx,
+            filetypes.liquid,
+            filetypes.markdown,
+            filetypes.templ,
+            filetypes.webc,
+        },
+    },
+
+    tsserver = {
+        implicitProjectConfiguration = {
+            checkJs = true,
+        },
+    },
+
+    yamlls = {
+        settings = {
+            yaml = {
+                schemaStore = {
+                    -- You must disable built-in schemaStore support if you want to use
+                    -- this plugin and its advanced options like `ignore`.
+                    enable = false,
+                    -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                    url = "",
+                },
+                schemas = schemastore.yaml.schemas(),
+            },
         },
     },
 }
