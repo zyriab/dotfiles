@@ -82,7 +82,9 @@ return function()
             goto FALLBACK
         end
 
-        vim.cmd("%!templ fmt")
+        ux.call_with_preserved_cursor(function()
+            vim.cmd("%!templ fmt")
+        end)
         return
     end
 
