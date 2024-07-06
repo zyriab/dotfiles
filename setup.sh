@@ -13,6 +13,7 @@ ln -sfn "$PWD/zsh/.bash_aliases" "$USER_HOME"
 
 ln -sfn "$PWD/nvim" "$CONFIG_DIR"
 ln -sfn "$PWD/wezterm" "$CONFIG_DIR"
+ln -sfn "$PWD/yazi" "$CONFIG_DIR"
 ln -sfn "$PWD/wezterm/.wezterm.lua" "$USER_HOME"
 ln -sfn "$PWD/lazygit" "$CONFIG_DIR"
 ln -sfn "$PWD/bat" "$CONFIG_DIR"
