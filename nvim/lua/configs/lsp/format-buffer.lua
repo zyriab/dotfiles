@@ -33,19 +33,14 @@ return function()
 
     -- [[ Go ]]
     if filetype == filetypes.go then
-        local ok, gofmt = pcall(require, "go.format")
-        if not ok then
-            vim.notify("Could not import go.format, using LSP formatter", vim.log.levels.ERROR)
+        if vim.fn.executable("golines") ~= 1 then
+            vim.notify("golines is not installed, using LSP formatter", vim.log.levels.ERROR)
             goto FALLBACK
         end
 
-        ok, _ = pcall(gofmt.goimports)
-
-        if not ok then
-            vim.notify("Running of goimports failed, using LSP formatter", vim.log.levels.ERROR)
-            goto FALLBACK
-        end
-
+        ux.call_with_preserved_cursor_position(function()
+            vim.cmd("%!golines --max-len=80 %")
+        end)
         return
     end
 
@@ -69,7 +64,7 @@ return function()
             goto FALLBACK
         end
 
-        ux.call_with_preserved_cursor(function()
+        ux.call_with_preserved_cursor_position(function()
             vim.cmd("%!prettierd %")
         end)
         return
@@ -82,7 +77,7 @@ return function()
             goto FALLBACK
         end
 
-        ux.call_with_preserved_cursor(function()
+        ux.call_with_preserved_cursor_position(function()
             vim.cmd("%!templ fmt")
         end)
         return
