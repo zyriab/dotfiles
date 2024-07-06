@@ -23,7 +23,6 @@ local servers = {
     marksman = {},
     sqlls = {},
     taplo = {},
-    templ = {},
     terraformls = {},
 
     arduino_language_server = {
@@ -36,22 +35,41 @@ local servers = {
         },
     },
 
-    -- NOTE: Replaced by Go.nvim until I settle on what I want in my env
     ---@url https://github.com/golang/tools/tree/master/gopls/doc
-    -- gopls = {
-    --     cmd = { "gopls", "--remote=auto" },
-    --     settings = {
-    --         gopls = {
-    --             gofumpt = true,
-    --         },
-    --         completion = true,
-    --     },
-    --     analyses = {
-    --         unusedwrite = true,
-    --         useany = true,
-    --         unusedvariable = true,
-    --     },
-    -- },
+    gopls = {
+        cmd = { "gopls", "--remote=auto" },
+        settings = {
+            gopls = {
+                gofumpt = true,
+                usePlaceholders = true,
+                completeUnimported = true,
+                hints = {
+                    assignVariableTypes = true,
+                    compositeLiteralFields = true,
+                    compositeLiteralTypes = true,
+                    constantValues = true,
+                    functionTypeParameters = true,
+                    parameterNames = true,
+                    rangeVariableTypes = true,
+                },
+                analyses = {
+                    unreachable = true,
+                    nilness = true,
+                    ST1003 = true,
+                    fieldalignment = true,
+                    unusedvariable = true,
+                    unusedParams = true,
+                    useany = true,
+                },
+            },
+        },
+        filetypes = {
+            filetypes.go,
+            filetypes.gomod,
+            filetypes.gotmpl,
+            filetypes.gowork,
+        },
+    },
 
     html = {
         filetypes = {
@@ -100,6 +118,12 @@ local servers = {
             filetypes.templ,
             filetypes.webc,
         },
+        init_options = { userLanguages = { templ = "html" } },
+    },
+
+    templ = {
+        cmd = { "templ", "lsp", "-log", "/Users/zyr/tmp/logs/templ.log" },
+        filetypes = { filetypes.templ },
     },
 
     tsserver = {
@@ -133,6 +157,8 @@ return function()
     mason_lspconfig.setup()
 
     neodev.setup()
+
+    -- vim.lsp.set_log_level("OFF")
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
     local capabilities = vim.lsp.protocol.make_client_capabilities()
