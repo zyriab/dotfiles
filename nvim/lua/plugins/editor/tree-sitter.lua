@@ -4,6 +4,7 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
         "nvim-treesitter/playground",
+        "vrischmann/tree-sitter-templ",
     },
     build = ":TSUpdate",
     config = function()
@@ -12,22 +13,23 @@ return {
             require("nvim-treesitter.configs").setup({
                 -- Add languages to be installed here that you want installed for treesitter
                 ensure_installed = {
+                    "bash",
                     "c",
+                    "comment",
                     "cpp",
+                    "css",
                     "go",
+                    "html",
+                    "javascript",
+                    "jsdoc",
                     "lua",
                     "python",
                     "rust",
+                    "templ",
                     "tsx",
-                    "javascript",
                     "typescript",
-                    "vimdoc",
                     "vim",
-                    "bash",
-                    "html",
-                    "css",
-                    "jsdoc",
-                    "comment",
+                    "vimdoc",
                 },
 
                 -- Autoinstall languages that are not installed
