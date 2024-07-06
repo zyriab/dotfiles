@@ -38,11 +38,9 @@ if [ -f ~/scripts/zvm-config.sh ]; then
     source ~/scripts/zvm-config.sh
 fi
 
-plugins+=(zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions zsh-autocomplete)
+plugins+=(zsh-syntax-highlighting zsh-autosuggestions zsh-autocomplete gh docker)
 
 source $ZSH/oh-my-zsh.sh
-
-# source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
