@@ -1,7 +1,6 @@
 local luasnip = require("luasnip")
 local loader_vscode = require("luasnip.loaders.from_vscode")
 
--- NOTE: additional snippets are added by Go.nvim
 -- Placeholder jumping is set in nvim-cmp config file
 return function()
     vim.keymap.set("i", "<C-o>", function()

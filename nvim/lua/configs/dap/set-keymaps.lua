@@ -1,19 +1,15 @@
 local dap = require("dap")
+local dap_go = require("dap-go")
 local persistent_breakpoints = require("persistent-breakpoints.api")
 
 return function()
-    -- HACK(DAP): Until I write my own Go config,
-    -- easier to alternate between `dap.continue()` and `:GoDebug`
     vim.keymap.set("n", "<F5>", function()
         local filetype = vim.bo.filetype
 
-        if filetype ~= "go" or dap.session() ~= nil then
+        if dap.session() ~= nil then
             dap.continue()
             return
         end
-
-        -- Launching a new session using `go.nvim` DAP config
-        vim.cmd.GoDebug()
     end, { desc = "Debug: Start/Continue" })
 
     vim.keymap.set("n", "<leader><F5>", dap.terminate, { desc = "Debug: Teminate session" })
@@ -34,6 +30,15 @@ return function()
         persistent_breakpoints.clear_all_breakpoints,
         { desc = "Debug: [C]lear [B]reakpoints" }
     )
+
+    -- [[ Go ]]
+    vim.keymap.set("n", "<leader>gdt", function()
+        dap_go.debug_test()
+    end, { desc = "Debug: [G]o [D]ebug [T]est" })
+
+    vim.keymap.set("n", "<leader>gdl", function()
+        dap_go.debug_test()
+    end, { desc = "Debug: [G]o [D]ebug [L]ast test" })
 
     -- NOTE: replaced by `persistent_breakpoints` plugin
     -- vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle [B]reakpoint" })

@@ -2,7 +2,7 @@ local M = {}
 
 --- Call the given function then scrolls back to the original cursor position
 ---@param fn function a function to be called
-M.call_with_preserved_cursor = function(fn)
+M.call_with_preserved_cursor_position = function(fn)
     if not fn then
         return
     end
