@@ -35,6 +35,17 @@ local servers = {
         },
     },
 
+    emmet_language_server = {
+        filetypes = {
+            filetypes.html,
+            filetypes.htmx,
+            filetypes.liquid,
+            filetypes.markdown,
+            filetypes.templ,
+            filetypes.webc,
+        },
+    },
+
     ---@url https://github.com/golang/tools/tree/master/gopls/doc
     gopls = {
         cmd = { "gopls", "--remote=auto" },
