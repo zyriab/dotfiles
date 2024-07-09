@@ -22,9 +22,8 @@ return function(bufnr)
     -- nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
     -- nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
     -- nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-    --
-    nmap("gi", telescope_builtin.lsp_implementations, "[G]oto [I]mplementation")
-    nmap("<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+    -- nmap("gi", telescope_builtin.lsp_implementations, "[G]oto [I]mplementation")
+    -- nmap("<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
     -- NOTE: Using otter.nvim
     -- nmap("K", vim.lsp.buf.hover, "Hover Documentation")
