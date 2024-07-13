@@ -63,3 +63,6 @@ if [ -f ~/.fzf.zsh ]; then
 fi
 
 eval "$(zoxide init --cmd cd zsh)"
+
+# Created by `pipx` on 2024-07-08 18:10:08
+export PATH="$PATH:/Users/zyr/.local/bin"
