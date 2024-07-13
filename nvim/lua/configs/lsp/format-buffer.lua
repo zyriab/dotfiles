@@ -39,7 +39,13 @@ return function()
         end
 
         ux.call_with_preserved_cursor_position(function()
-            vim.cmd("%!golines --max-len=80 %")
+            vim.cmd(
+                "%!golines",
+                "--write-output",
+                "--max-len=80",
+                "--ignore-generated",
+                "--ignored-dirs=vendor,node_modules"
+            )
         end)
         return
     end
