@@ -1,20 +1,24 @@
 ## Neovim config
 
-Current Neovim config, rewritten early February 2024  
+Current Neovim config, rewritten early February 2024
 *Protanopia-friendly* (red/green colorblindness)
 
 **Current configs:**
-- HTML/CSS/JS (JSDoc) -- quite basic, to be refined as I work
-- Go (through go.nvim) -- to be rewritten from scratch as I settle on what I do and don't need
+- HTML/WebC/CSS/JS (JSDoc)
+- Go+Templ
+- C (basic config w/ DAP - to be improved)
+- Arduino (not great, but works)
+- Lua (basic config - to be improved)
 
 **TODO**
 - [x] Add `go.nvim` commands keymaps
 - [x] Add final touch (Copilot, Dashboard w/ verse) and stop tweaking this all day :D
-- [ ] Add theme transparency toggle
-- [ ] Streamline DevX (refactoring, running fns, remove bloat, etc)
+- [x] Add theme transparency toggle (done through WezTerm)
+- [x] Streamline DevX (refactoring, running fns, remove bloat, etc)
 - [ ] Implement nice snippets
 - [ ] Add good C support (std && AVR for starters)
 - [ ] Add good Lua support (mainly for plugin and configs development)
-- [ ] Add some Bash support
+- [x] Add some Bash support
 
-<img width="1920" alt="image" src="https://github.com/zyriab/dotfiles/assets/2111910/28087a9a-397c-48c5-b616-c8e744f36caf">
+<img width="1920" alt="image"
+    src="https://github.com/zyriab/dotfiles/assets/2111910/28087a9a-397c-48c5-b616-c8e744f36caf">
