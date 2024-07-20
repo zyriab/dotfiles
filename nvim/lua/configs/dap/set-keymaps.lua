@@ -3,19 +3,11 @@ local dap_go = require("dap-go")
 local persistent_breakpoints = require("persistent-breakpoints.api")
 
 return function()
-    vim.keymap.set("n", "<F5>", function()
-        local filetype = vim.bo.filetype
-
-        if dap.session() ~= nil then
-            dap.continue()
-            return
-        end
-    end, { desc = "Debug: Start/Continue" })
-
-    vim.keymap.set("n", "<leader><F5>", dap.terminate, { desc = "Debug: Teminate session" })
     vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
     vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
     vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
+    vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
+    vim.keymap.set("n", "<leader><F5>", dap.terminate, { desc = "Debug: Teminate session" })
 
     vim.keymap.set("n", "<leader>b", persistent_breakpoints.toggle_breakpoint, { desc = "Debug: Toggle [B]reakpoint" })
     vim.keymap.set(
