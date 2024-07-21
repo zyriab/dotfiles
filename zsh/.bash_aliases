@@ -8,6 +8,7 @@ alias lg="lazygit"
 alias rst="source ~/.zshrc"
 alias gcg="git config --edit --global"
 alias gcl="git config --edit --local"
+alias cputemp="sudo powermetrics --samplers smc |grep -i \"CPU die temperature\""
 
 ### Prog
 alias got="go test ./..."
