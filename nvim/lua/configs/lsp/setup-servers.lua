@@ -127,7 +127,6 @@ local servers = {
             filetypes.liquid,
             filetypes.markdown,
             filetypes.templ,
-            filetypes.webc,
         },
         init_options = { userLanguages = { templ = "html" } },
     },
