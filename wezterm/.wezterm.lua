@@ -84,8 +84,8 @@ if wezterm.config_builder then
 end
 
 config.font_size = font_size
-config.window_background_opacity = window_background_opacity
-config.macos_window_background_blur = window_background_blur
+-- config.window_background_opacity = window_background_opacity
+-- config.macos_window_background_blur = window_background_blur
 
 config.audible_bell = "Disabled"
 
