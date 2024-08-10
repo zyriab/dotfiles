@@ -76,6 +76,14 @@ return function()
         return
     end
 
+    -- [[ WebC/Markdown ]]
+    if filetype == filetypes.webc or filetype == filetypes.markdown then
+        local formatters = require("utils.formatters")
+
+        formatters.lsp_format_skip_frontmatter()
+        return
+    end
+
     -- [[ templ ]]
     if filetype == filetypes.templ then
         if vim.fn.executable("templ") ~= 1 then

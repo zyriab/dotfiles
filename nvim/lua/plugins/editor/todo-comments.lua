@@ -9,13 +9,12 @@ return {
 
         vim.keymap.set("n", "<leader>td", vim.cmd.TodoTelescope, { desc = "Show [T]o[D]o comments in Telescope" })
 
-        -- FIXME: need to debug the RegEx
         todo_comments.setup({
             highlight = {
-                pattern = [[.*<(KEYWORDS)\s*(:|\()]],
+                pattern = [[.*<((KEYWORDS)%(\(.{-1,}\))?):]],
             },
             search = {
-                pattern = [[\b(KEYWORDS)\s*(:|\()]],
+                pattern = [[\b(KEYWORDS)(\(\w*\))*:]],
             },
         })
     end,

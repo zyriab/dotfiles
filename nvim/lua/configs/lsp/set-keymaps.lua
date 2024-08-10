@@ -53,4 +53,7 @@ return function(bufnr)
     -- [[ Go ]]
     nmap("<leader>gie", vim.cmd.GoIfErr, "[G]o [I]f [E]rror (snippet)")
     nmap("<leader>gtg", vim.cmd.GoTestsAll, "[G]o [T]est [G]enerate for all fn")
+    nmap("<leader>gg", function()
+        vim.cmd("!templ generate")
+    end, "[G]o [G]enerate Templ file")
 end
