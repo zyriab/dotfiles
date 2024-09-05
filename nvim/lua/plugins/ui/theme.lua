@@ -94,9 +94,6 @@ return {
                     DapBreakpointRejected = { fg = colors1.diag.error },
                     DapLogPoint = { fg = colors1.diag.info },
 
-                    -- Copilot-cmp
-                    CmpItemKindCopilot = { fg = colors1.syntax.string },
-
                     -- Dashboard
                     DashboardFooter = { fg = colors1.diag.hint },
                     DashboardProjectTitle = { fg = colors1.diag.warn },
