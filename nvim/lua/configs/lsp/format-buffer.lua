@@ -27,7 +27,9 @@ return function()
             goto FALLBACK
         end
 
-        vim.cmd("%!clang-format")
+        ux.call_with_preserved_cursor_position(function()
+            vim.cmd("%!clang-format")
+        end)
         return
     end
 
