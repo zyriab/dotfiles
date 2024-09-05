@@ -68,7 +68,6 @@ return {
                 format = lspkind.cmp_format({
                     mode = "symbol_text", -- show only symbol annotations
                     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                    symbol_map = { Copilot = "" },
                     -- can also be a function to dynamically calculate max width such as
                     -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
                     ellipsis_char = "", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
@@ -109,17 +108,12 @@ return {
             sources = {
                 { name = "nvim_lsp" },
                 { name = "vim-dadbod-completion" },
-                { name = "copilot" },
                 { name = "luasnip" },
                 { name = "path" },
             },
             sorting = {
                 priority_weight = 2,
                 comparators = {
-                    -- Making sure that poor Copilot suggestions are not prioritized
-                    cmp.config.compare.exact,
-                    require("copilot_cmp.comparators").prioritize,
-
                     -- Below is the default comparitor list and order for nvim-cmp except for `exact`
                     cmp.config.compare.offset,
                     -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
