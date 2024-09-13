@@ -41,6 +41,7 @@ return function()
         end
 
         ux.call_with_preserved_cursor_position(function()
+            vim.cmd("%!gofumpt", "-l", "-w")
             vim.cmd(
                 "%!golines",
                 "--write-output",
