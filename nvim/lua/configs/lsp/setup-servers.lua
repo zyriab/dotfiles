@@ -158,7 +158,7 @@ local servers = {
         filetypes = { filetypes.templ },
     },
 
-    tsserver = {
+    ts_ls = {
         implicitProjectConfiguration = {
             checkJs = true,
         },
