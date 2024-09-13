@@ -52,6 +52,7 @@ local servers = {
         settings = {
             gopls = {
                 gofumpt = true,
+                staticcheck = true,
                 usePlaceholders = true,
                 completeUnimported = true,
                 hints = {
@@ -90,7 +91,7 @@ local servers = {
                 "run",
                 "--enable-all",
                 "--disable",
-                "lll",
+                "lll,varnamelen,depguard,funlen,gci",
                 "--out-format",
                 "json",
                 "--issues-exit-code=1",
@@ -212,6 +213,21 @@ return function()
                 cmd = (servers[server_name] or {}).cmd,
                 filetypes = (servers[server_name] or {}).filetypes,
                 single_file_support = true,
+            })
+        end,
+
+        ["gopls"] = function()
+            lspconfig.gopls.setup({
+                cmd = servers.gopls.cmd,
+                settings = servers.gopls.settings,
+                filetypes = servers.gopls.filetypes,
+            })
+        end,
+        ["golangci_lint_ls"] = function()
+            lspconfig.golangci_lint_ls.setup({
+                cmd = servers.golangci_lint_ls.cmd,
+                filetypes = servers.golangci_lint_ls.filetypes,
+                init_options = servers.golangci_lint_ls.init_options,
             })
         end,
     })
