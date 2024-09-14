@@ -91,7 +91,7 @@ local servers = {
                 "run",
                 "--enable-all",
                 "--disable",
-                "lll,varnamelen,depguard,funlen,gci",
+                "lll,varnamelen,depguard,funlen,gci,godox,godot,gochecknoglobals",
                 "--out-format",
                 "json",
                 "--issues-exit-code=1",
