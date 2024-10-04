@@ -91,7 +91,7 @@ local servers = {
                 "run",
                 "--enable-all",
                 "--disable",
-                "lll,varnamelen,depguard,funlen,gci,godox,godot,gochecknoglobals",
+                "lll,varnamelen,depguard,funlen,gci,godox,godot,gochecknoglobals,exportloopref,gomnd",
                 "--out-format",
                 "json",
                 "--issues-exit-code=1",
@@ -183,6 +183,21 @@ local servers = {
 
 local mason_tools_installs = vim.tbl_extend("keep", {}, vim.tbl_keys(servers))
 
+local function setup_handlers(capabilities)
+    -- Add specific handlers for servers that need custom setup
+    for server_name, server_config in next, servers, nil do
+        lspconfig[server_name].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = server_config.cmd,
+            settings = server_config.settings,
+            filetypes = server_config.filetypes,
+            init_options = server_config.init_options,
+            single_file_support = true,
+        })
+    end
+end
+
 return function()
     -- mason-lspconfig requires that these setup functions are called in this order
     -- before setting up the servers.
@@ -204,31 +219,5 @@ return function()
     -- Making sure `.h` files are declared as C files and not C++
     vim.cmd("let g:c_syntax_for_h = 1")
 
-    mason_lspconfig.setup_handlers({
-        function(server_name)
-            lspconfig[server_name].setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = servers[server_name],
-                cmd = (servers[server_name] or {}).cmd,
-                filetypes = (servers[server_name] or {}).filetypes,
-                single_file_support = true,
-            })
-        end,
-
-        ["gopls"] = function()
-            lspconfig.gopls.setup({
-                cmd = servers.gopls.cmd,
-                settings = servers.gopls.settings,
-                filetypes = servers.gopls.filetypes,
-            })
-        end,
-        ["golangci_lint_ls"] = function()
-            lspconfig.golangci_lint_ls.setup({
-                cmd = servers.golangci_lint_ls.cmd,
-                filetypes = servers.golangci_lint_ls.filetypes,
-                init_options = servers.golangci_lint_ls.init_options,
-            })
-        end,
-    })
+    setup_handlers(capabilities)
 end
