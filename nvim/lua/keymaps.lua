@@ -29,11 +29,11 @@ vim.keymap.set("n", "<leader>Y", "\"+Y", { desc = "[Y]ank line into OS clipboard
 vim.keymap.set("n", "<leader>yy", "\"+yy", { desc = "[YY]ank line into OS clipboard" })
 
 -- Paste over selection without losing buffer contents
-vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "[P]aste over selection w/o losing buffer" })
+vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "[P]aste over selection w/o losing default register's content" })
 
 -- Delete without losing buffer content
-vim.keymap.set("n", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" })
-vim.keymap.set("v", "<leader>d", "\"_d", { desc = "[D]elete w/o losing buffer" })
+vim.keymap.set("n", "<leader>d", "\"_d", { desc = "[D]elete w/o losing default register's content" })
+vim.keymap.set("v", "<leader>d", "\"_d", { desc = "[D]elete w/o losing default register's content" })
 
 -- [[ Terminal ]]
 vim.api.nvim_create_user_command("TermToggle", term_utils.toggle_terminal, {})
