@@ -1,5 +1,6 @@
 local filetypes = require("utils.filetypes")
 local ux = require("utils.ux")
+local formatters = require("utils.formatters")
 
 local clang_types = {
     filetypes.c,
@@ -9,7 +10,9 @@ local clang_types = {
 
 local prettier_types = {
     filetypes.javascript,
+    filetypes.javascriptreact,
     filetypes.typescript,
+    filetypes.typescriptreact,
     filetypes.jsx,
     filetypes.tsx,
     filetypes.json,
@@ -27,9 +30,10 @@ return function()
             goto FALLBACK
         end
 
-        ux.call_with_preserved_cursor_position(function()
-            vim.cmd("%!clang-format")
-        end)
+        local current_file_name = vim.fn.expand("%")
+        local cmd = { "clang-format", current_file_name }
+        _ = formatters.run_command_on_buffer(cmd)
+
         return
     end
 
@@ -40,16 +44,30 @@ return function()
             goto FALLBACK
         end
 
-        ux.call_with_preserved_cursor_position(function()
-            vim.cmd("%!gofumpt", "-l", "-w")
-            vim.cmd(
-                "%!golines",
-                "--write-output",
-                "--max-len=80",
-                "--ignore-generated",
-                "--ignored-dirs=vendor,node_modules"
-            )
-        end)
+        -- HACK: golines seems to need the file to be written to disk first.
+        -- This solutions is working well for now and doesn't seem to cause any problem.
+        -- There might be a cleaner way to do this with a temp file but it's fine for now :)
+        vim.cmd("noa w")
+
+        local current_file_name = vim.fn.expand("%")
+        local cmd = { "gofumpt", current_file_name }
+
+        local ok = formatters.run_command_on_buffer(cmd)
+
+        if not ok then
+            return
+        end
+
+        cmd = {
+            "golines",
+            current_file_name,
+            "--max-len=80",
+            "--ignore-generated",
+            "--ignored-dirs=vendor,node_modules",
+        }
+
+        _ = formatters.run_command_on_buffer(cmd)
+
         return
     end
 
@@ -63,6 +81,7 @@ return function()
         end
 
         stylua.format_file()
+
         return
     end
 
@@ -73,17 +92,21 @@ return function()
             goto FALLBACK
         end
 
-        ux.call_with_preserved_cursor_position(function()
-            vim.cmd("%!prettierd %")
-        end)
+        local current_file_name = vim.fn.expand("%:t")
+        local cmd = { "prettierd", "--no-color", current_file_name }
+        local ok = formatters.run_command_on_buffer(cmd)
+
+        if not ok then
+            goto FALLBACK
+        end
+
         return
     end
 
     -- [[ WebC/Markdown ]]
     if filetype == filetypes.webc or filetype == filetypes.markdown then
-        local formatters = require("utils.formatters")
-
         formatters.lsp_format_skip_frontmatter()
+
         return
     end
 
@@ -94,9 +117,19 @@ return function()
             goto FALLBACK
         end
 
-        ux.call_with_preserved_cursor_position(function()
-            vim.cmd("%!templ fmt")
-        end)
+        vim.cmd("noa w")
+
+        local current_file_name = vim.fn.expand("%")
+        local cmd = {
+            "templ",
+            "fmt",
+            "-stdout",
+            "-log-level",
+            "error",
+            current_file_name,
+        }
+        _ = formatters.run_command_on_buffer(cmd)
+
         return
     end
 
