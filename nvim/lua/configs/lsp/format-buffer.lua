@@ -39,15 +39,10 @@ return function()
 
     -- [[ Go ]]
     if filetype == filetypes.go then
-        if vim.fn.executable("golines") ~= 1 then
-            vim.notify("golines is not installed, using LSP formatter", vim.log.levels.ERROR)
+        if vim.fn.executable("gofumpt") ~= 1 then
+            vim.notify("gofumpt is not installed, using LSP formatter", vim.log.levels.ERROR)
             goto FALLBACK
         end
-
-        -- HACK: golines seems to need the file to be written to disk first.
-        -- This solutions is working well for now and doesn't seem to cause any problem.
-        -- There might be a cleaner way to do this with a temp file but it's fine for now :)
-        vim.cmd("noa w")
 
         local current_file_name = vim.fn.expand("%")
         local cmd = { "gofumpt", current_file_name }
