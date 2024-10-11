@@ -3,6 +3,7 @@ return {
     -- "mrded/nvim-lsp-notify",
     dir = "$HOME/Developer/nvim-plugins/nvim-lsp-notify",
     dependencies = { "rcarriga/nvim-notify" },
+    config = function() end,
     opts = {
         -- Keywords to exclude from notifications
         excludes = {
