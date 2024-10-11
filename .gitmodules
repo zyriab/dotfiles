@@ -1,3 +1,6 @@
 [submodule "nixos"]
 	path = nixos
 	url = https://github.com/zyriab/nixos
+[submodule "nvim"]
+	path = nvim
+	url = https://github.com/zyriab/nvim
