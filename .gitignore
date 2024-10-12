@@ -3,3 +3,5 @@ nvim/OUTLINE_1
 browsh/firefox_profile
 btop/btop.log
 gh/hosts.yml
+environment.d/10-home-manager.conf
+git/config
