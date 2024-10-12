@@ -5,3 +5,5 @@ btop/btop.log
 gh/hosts.yml
 environment.d/10-home-manager.conf
 git/config
+wezterm/colors/colors.toml
+wezterm/wezterm.lua
