@@ -4,7 +4,7 @@
 browsh_supporter = "♥"
 
 # The page to show at startup. Browsh will fail to boot if this URL is not accessible
-startup-url = "https://serach.nixos.org/"
+startup-url = "search.nixos.org"
 
 # The base query when a non-URL is entered into the URL bar
 default_search_engine_base = "https://www.google.com/search?q="
